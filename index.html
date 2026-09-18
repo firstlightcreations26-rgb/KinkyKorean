@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="The Kinky Korean — anonymous, handwritten, unfiltered.">
+  <title>The Kinky Korean — My Private Diary</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="cover">
+    <div class="notebook-cover">
+      <div class="cover-sheen"></div>
+      <div class="cover-content">
+        <div class="tiny">PRIVATE DIARY</div>
+        <div class="heart">♥</div>
+        <h1>THE<br>KINKY<br>KOREAN</h1>
+        <p>Anonymous. Handwritten. Unfiltered.</p>
+        <button class="open-btn" onclick="openDiary()">Open My Diary <span>→</span></button>
+        <div class="cover-note">♡ Please don't tell anyone you found me.</div>
+      </div>
+    </div>
+  </main>
+
+  <section id="diary" class="site-shell hidden">
+    <header class="topbar">
+      <a class="brand" href="index.html">THE KINKY KOREAN</a>
+      <nav>
+        <a href="#archive">Archive</a>
+        <a href="#access">Access</a>
+        <a href="#checkin">KK Check-In</a>
+      </nav>
+    </header>
+
+    <div class="book">
+      <article class="paper intro-page">
+        <div class="page-label">PAGE 01 · FREE</div>
+        <p class="eyebrow">Before you open my diary…</p>
+        <h2>You found me. 💋</h2>
+        <p>You don't know my name. You don't know where I live. You don't know what I look like.</p>
+        <p>And for now… I'm perfectly happy keeping it that way.</p>
+        <p>This is my diary. The sweet stuff. The messy stuff. The embarrassing stuff. The thoughts I probably should keep to myself.</p>
+        <p>Some pages are about love. Some are about lust. Some are about the things I almost didn't write down.</p>
+        <p>Every entry is another little piece of the woman behind <strong>The Kinky Korean.</strong></p>
+        <div class="scribble">Turn the page…</div>
+        <a class="page-btn" href="entry-001.html">Read Entry #001 →</a>
+      </article>
+
+      <aside class="sticky">
+        <span>♥</span>
+        <strong>Today's note</strong>
+        <p>Some pages are free.<br>The really interesting ones are locked.</p>
+      </aside>
+    </div>
+
+    <section id="archive" class="section">
+      <div class="section-heading">
+        <span>THE ARCHIVE</span>
+        <h2>Pages I haven't let everyone read.</h2>
+      </div>
+      <div class="archive-grid">
+        <a class="archive-card free" href="entry-001.html">
+          <span>ENTRY #001 · FREE</span>
+          <h3>Me & My Porn Addiction</h3>
+          <p>I swear, I don't know what I'd do without porn…</p>
+          <b>Open page →</b>
+        </a>
+        <div class="archive-card locked">
+          <span>ENTRY #002 · 🔒</span>
+          <h3>The First Time I Realized…</h3>
+          <p>There are some things you don't understand about yourself until later.</p>
+          <b>Locked page</b>
+        </div>
+        <div class="archive-card locked">
+          <span>ENTRY #003 · 🔒</span>
+          <h3>Things I Never Told Anyone</h3>
+          <p>Some stories stayed in my head for a very long time.</p>
+          <b>Locked page</b>
+        </div>
+        <div class="archive-card locked">
+          <span>UNFILTERED · 🔒</span>
+          <h3>How I Became KK</h3>
+          <p>The stories behind the woman you found.</p>
+          <b>Unfiltered Access</b>
+        </div>
+      </div>
+    </section>
+
+    <section id="access" class="section access-section">
+      <div class="section-heading">
+        <span>CHOOSE YOUR ACCESS</span>
+        <h2>How far into my diary do you want to go?</h2>
+      </div>
+      <div class="plans">
+        <div class="plan">
+          <div class="plan-icon">💗</div>
+          <h3>Daily Access</h3>
+          <div class="price">$28<span>/month</span></div>
+          <p>New diary entries and current pages.</p>
+          <button class="ghost-btn" onclick="demoMessage('Payment setup comes later — this is a visual demo.')">Choose Daily</button>
+        </div>
+        <div class="plan featured">
+          <div class="ribbon">MOST PRIVATE</div>
+          <div class="plan-icon">🖤</div>
+          <h3>Unfiltered Access</h3>
+          <div class="price">$44<span>/month</span></div>
+          <p>Daily access plus the private archive and deeper stories.</p>
+          <button class="dark-btn" onclick="demoMessage('Payment setup comes later — this is a visual demo.')">Enter Unfiltered</button>
+        </div>
+        <div class="plan">
+          <div class="plan-icon">📖</div>
+          <h3>Single Entry</h3>
+          <div class="price">$8<span>/entry</span></div>
+          <p>Unlock one premium diary page.</p>
+          <button class="ghost-btn" onclick="demoMessage('Payment setup comes later — this is a visual demo.')">Unlock One</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section voice-section">
+      <div class="voice-card">
+        <span class="section-tag">🎧 KK'S VOICE</span>
+        <h2>Sometimes I don't want you to read it.</h2>
+        <p>Sometimes I want you to hear me tell you.</p>
+        <div class="voice-list">
+          <div><span>🎧</span><div><strong>Little LISTEN moments</strong><small>Short clips tucked into selected entries.</small></div></div>
+          <div><span>🎙️</span><div><strong>Only 5 full voice entries</strong><small>A limited collection, told naturally in KK's own voice.</small></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section extras">
+      <div class="mini-card"><span>💌</span><h3>Private Message</h3><p>Dear KK… Send a private note.</p><button onclick="demoMessage('Private messaging will be connected after payment setup.')">Open the page</button></div>
+      <div class="mini-card"><span>🖤</span><h3>Private Extras</h3><p>Limited extras from the private side of the diary.</p><button onclick="demoMessage('Private Extras will be connected after the storefront is set up.')">Peek inside</button></div>
+      <div class="mini-card" id="checkin"><span>💋</span><h3>KK Check-In</h3><p>Tell me what you want more of.</p><button onclick="document.getElementById('checkin-modal').classList.add('show')">Take the check-in</button></div>
+    </section>
+
+    <section class="unmasking">
+      <div class="lock">🔐</div>
+      <span>THE LONG-TERM MYSTERY</span>
+      <h2>The Unmasking</h2>
+      <p>After 12 consecutive months as a subscriber, a special private reveal becomes available.</p>
+      <div class="milestone">12 MONTHS · ONE SPECIAL REVEAL</div>
+    </section>
+
+    <footer>
+      <div class="tipjar">🫙 <span>Leave KK a little tip?</span> <button onclick="demoMessage('Tip Jar will be connected after payment setup.')">Just because you felt like it. 💋</button></div>
+      <p>THE KINKY KOREAN · Anonymous. Handwritten. Unfiltered.</p>
+    </footer>
+  </section>
+
+  <div id="checkin-modal" class="modal">
+    <div class="modal-box">
+      <button class="close" onclick="this.closest('.modal').classList.remove('show')">×</button>
+      <div class="section-tag">🖤 THE KK CHECK-IN</div>
+      <h2>Okay… tell me.</h2>
+      <form onsubmit="submitCheckin(event)">
+        <label>Are you enjoying this, Kinky Korean?
+          <select><option>I'm obsessed</option><option>I'm really enjoying it</option><option>I need more KK 😏</option><option>I have thoughts…</option></select>
+        </label>
+        <label>Would you want a Kinky Korean in your life?
+          <select><option>Absolutely</option><option>Probably more than I should</option><option>Depends what kind 😏</option><option>I'm still figuring that out</option></select>
+        </label>
+        <label>How much does this Kinky Korean turn you on? <span class="range-value" id="rangeValue">5</span>/10
+          <input type="range" min="0" max="10" value="5" oninput="document.getElementById('rangeValue').textContent=this.value">
+        </label>
+        <label>What do you wish you could see or hear more of?
+          <textarea placeholder="Tell KK…"></textarea>
+        </label>
+        <label>If you could ask KK one thing, what would it be?
+          <textarea placeholder="I'm listening…"></textarea>
+        </label>
+        <button class="dark-btn" type="submit">Send to KK 💋</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
