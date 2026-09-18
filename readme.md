@@ -1,3 +1,4 @@
+[README.md](https://github.com/user-attachments/files/32395817/README.md)
 # The Kinky Korean — GitHub Pages Starter
 
 This is the first visual/interactive starter for **The Kinky Korean** diary site.
@@ -34,3 +35,7 @@ Do not put private customer information or payment credentials in this repositor
 6. Save. GitHub will provide your Pages address.
 
 Later, the custom domain `kinkykorean.blog` can be connected to GitHub Pages.
+
+
+## September 2026 content update
+Added diary entries 002–006 and direct Venmo/Cash App Tiny Tip Jar links. The age-15 story is not included.
