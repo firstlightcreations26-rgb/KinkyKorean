@@ -1,0 +1,23 @@
+KK LEGAL / PRIVACY NOTES — KEEP FOR YOUR RECORDS
+
+Public contact:
+info@kinkykorean.blog
+
+Reader/private-message contact:
+DearKK@kinkykorean.blog
+
+Current access model:
+• $8 Single Entry — only eligible individual entries.
+• $28 Daily Access — membership/access level.
+• $44 Unfiltered Access — includes Unfiltered-exclusive material.
+• “My Craziest Moments…” is Unfiltered-only and is NOT a $8 Single Entry.
+• Payments/access are manually verified.
+• Customer is told to allow up to 24 hours for access delivery.
+• Do not describe a plan as automatically renewing unless you actually implement automatic recurring billing and the checkout clearly discloses renewal and cancellation terms.
+
+Data-minimization rule:
+Only collect what you actually need — normally display name, email, access choice, payment method/payment verification, dates, and necessary notes.
+
+Do NOT publish your private membership spreadsheet in a public GitHub repository.
+
+This draft is practical website language, not individualized legal advice. Laws and third-party platform rules can change.
