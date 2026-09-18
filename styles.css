@@ -1,3 +1,4 @@
+
 :root{
   --pink:#f7b7cf;
   --pink2:#ffdbe8;
@@ -47,7 +48,7 @@ h1,h2,h3,.brand,.eyebrow,.scribble,.section-heading span,.section-tag,.page-labe
 .sticky span{font-size:25px}.sticky strong{display:block}.sticky p{margin:5px 0}
 .section{max-width:1100px;margin:90px auto;padding:0 25px}
 .section-heading{text-align:center;color:#fff}.section-heading span{color:var(--pink);font-size:20px}.section-heading h2{font-size:48px;margin:0 0 35px}
-.archive-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}
+.archive-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
 .archive-card{min-height:225px;padding:25px;background:#fff;color:var(--ink);border-radius:5px;box-shadow:0 10px 30px #0004;position:relative}
 .archive-card:nth-child(2){transform:rotate(1.2deg)}.archive-card:nth-child(3){transform:rotate(-1deg)}.archive-card:nth-child(4){transform:rotate(1.5deg)}
 .archive-card span{font-size:11px;letter-spacing:1px;color:var(--hot);font-weight:700}
@@ -67,3 +68,6 @@ footer{padding:25px 20px 45px;text-align:center;color:#9f9198;font-size:12px}.ti
 .entry-wrap{padding:60px 20px 100px}.entry-page{max-width:780px;margin:auto;padding:55px 65px 70px;min-height:1000px}.entry-page h1{font-size:62px;line-height:.95;margin:8px 0 35px}.listen-moment{background:#fff0f6;border-left:4px solid var(--hot);padding:16px 20px;margin:28px 0 30px;transform:rotate(.4deg)}.listen-label{font-family:"Caveat";font-size:22px;color:var(--hot);font-weight:700}.listen-moment p{font-size:21px!important;margin:2px 0 8px!important}.listen-moment button{border:0;background:var(--ink);color:#fff;border-radius:999px;padding:9px 17px;cursor:pointer}.listen-moment small{display:block;color:#856f79;margin-top:8px;font-size:11px}.closing-note{margin:45px 0 35px;text-align:center;font-family:"Caveat";font-size:27px}.closing-note strong,.closing-note span{display:block}.closing-note strong{font-size:35px;color:var(--hot)}.entry-bottom{border-top:1px dashed #d8bdc7;padding-top:25px;display:flex;justify-content:space-between;gap:15px;align-items:center}.next-link{font-family:"Caveat";font-size:22px;color:var(--hot)}
 @media(max-width:800px){.topbar nav{display:none}.intro-page,.entry-page{padding:40px 28px}.sticky{display:none}.archive-grid,.plans,.extras{grid-template-columns:1fr}.section-heading h2{font-size:40px}.cover h1{font-size:58px}.entry-page h1{font-size:52px}.entry-bottom{flex-direction:column;align-items:flex-start}}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+
+/* KK payment tip jar */
+.entry-tip{color:var(--ink);margin:0}.entry-tip>span{display:block;font-size:25px;font-weight:700}.entry-tip small{display:block;color:var(--muted);font-family:"DM Sans";font-size:11px;margin:2px 0 10px}.tip-actions{display:flex;gap:8px;flex-wrap:wrap}.tip-pay{display:inline-block;padding:9px 13px;border-radius:999px;background:var(--ink);color:#fff!important;font-family:"DM Sans";font-size:12px;font-weight:700}.home-tip a{color:var(--pink);text-decoration:underline;text-underline-offset:3px}.archive-grid{align-items:stretch}
