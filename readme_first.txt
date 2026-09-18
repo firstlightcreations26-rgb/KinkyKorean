@@ -1,9 +1,15 @@
-KK DETAILED DIARY ACCESS PAGE
-This redesign uses the supplied diary/scrapbook visual reference as the direction: open notebook, lined paper, taped notes, handwriting, imperfect rotations, shadows, doodles and a darker Unfiltered note.
+DEAR KK — PRIVATE MESSAGE PAGE
 
-Upload:
-1. access.html
-2. access-received.html
-into the same GitHub folder as index.html and disclaimer.html.
+Price currently shown: $10 per private message.
 
-IMPORTANT: the visual/front-end flow works, but the form still needs a real form/backend connection before customer information will be delivered or stored.
+FILES:
+• dear-kk.html
+• dear-kk-received.html
+
+Upload both beside index.html in your GitHub repository.
+
+IMPORTANT:
+This is the finished visual/front-end flow. The form currently sends the visitor to the confirmation page, but it does NOT yet deliver/store the message. Connect it to the same private form/backend we choose for membership requests before accepting real paid messages.
+
+Public-facing message email:
+DearKK@kinkykorean.blog
