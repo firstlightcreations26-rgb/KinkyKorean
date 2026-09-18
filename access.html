@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Choose Your Access | The Kinky Korean</title>
+<style>
+:root{--pink:#f7c8dc;--paper:#fff8fb;--ink:#21151c;--hot:#b72f6b;--soft:#ffe4ef}
+*{box-sizing:border-box} body{margin:0;background:var(--pink);color:var(--ink);font-family:Georgia,serif}
+.wrap{max-width:950px;margin:36px auto;padding:18px}
+.paper{background:var(--paper);border:2px solid var(--ink);box-shadow:9px 9px 0 rgba(33,21,28,.18);padding:36px;border-radius:4px}
+h1,h2,.script{font-family:"Brush Script MT","Segoe Script",cursive;color:var(--hot)}
+h1{text-align:center;font-size:3.2rem;margin:.2rem 0}.sub{text-align:center;font-style:italic}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:30px 0}
+.card{border:1.5px solid var(--ink);background:white;padding:22px;border-radius:12px;position:relative}
+.card.unfiltered{background:#241820;color:white}.card.unfiltered h2{color:#ffb5d2}
+.price{font-size:2rem;font-weight:bold}.small{font-size:.92rem;opacity:.85}
+button,.pay{display:inline-block;border:0;border-radius:999px;padding:12px 18px;background:var(--hot);color:white;font-weight:bold;cursor:pointer;text-decoration:none}
+.pay{margin:5px}.selected{outline:4px solid #d96b99}
+.formbox{margin-top:34px;background:var(--soft);padding:25px;border:1.5px dashed var(--hot);border-radius:12px}
+label{display:block;font-weight:bold;margin-top:15px}input,select{width:100%;padding:12px;border:1px solid #8d6b79;border-radius:7px;background:white}
+.note{padding:14px;border-left:5px solid var(--hot);background:white;margin:18px 0}
+footer{text-align:center;margin-top:28px;font-size:.9rem}
+@media(max-width:760px){.grid{grid-template-columns:1fr}.paper{padding:22px}h1{font-size:2.5rem}}
+</style>
+</head>
+<body>
+<main class="wrap"><section class="paper">
+<div class="script" style="text-align:center">💗 You found my diary…</div>
+<h1>Choose Your Access</h1>
+<p class="sub">How far into KK's diary do you want to go? 💋</p>
+
+<div class="grid">
+<article class="card" id="single">
+<h2>📖 Single Entry</h2><div class="price">$8</div>
+<p>One eligible locked diary page — yours to read privately.</p>
+<p class="small">Some 🖤 Unfiltered Exclusive entries cannot be purchased individually.</p>
+<button type="button" onclick="pick('Single Entry — $8','single')">Unlock One Page</button>
+</article>
+
+<article class="card" id="daily">
+<h2>💗 Daily Access</h2><div class="price">$28</div>
+<p>Step deeper into KK's diary and unlock the regular members-only pages included with Daily Access.</p>
+<button type="button" onclick="pick('Daily Access — $28','daily')">Choose Daily</button>
+</article>
+
+<article class="card unfiltered" id="unfiltered">
+<h2>🖤 Unfiltered Access</h2><div class="price">$44</div>
+<p>The deeper archive — including entries marked <strong>UNFILTERED EXCLUSIVE</strong>.</p>
+<p class="small">“My Craziest Moments…” lives here and is not available as a $8 Single Entry.</p>
+<button type="button" onclick="pick('Unfiltered Access — $44','unfiltered')">Go Unfiltered</button>
+</article>
+</div>
+
+<section class="formbox" id="request">
+<h2>💌 Request Your Access</h2>
+<p>Choose your access above, send your payment, then submit your information below so KK can match it.</p>
+
+<div class="note"><strong>Pay with:</strong><br>
+<a class="pay" href="https://venmo.com/u/kinkykorean" target="_blank" rel="noopener">Venmo @kinkykorean</a>
+<a class="pay" href="https://cash.app/$Kinkykorean" target="_blank" rel="noopener">Cash App $Kinkykorean</a>
+</div>
+
+<form id="accessForm">
+<label for="plan">Access requested</label>
+<select id="plan" required>
+<option value="">Choose an option</option>
+<option>Single Entry — $8</option>
+<option>Daily Access — $28</option>
+<option>Unfiltered Access — $44</option>
+</select>
+
+<label for="entry">Entry title (only for $8 Single Entry)</label>
+<input id="entry" placeholder="Example: I Don't Like Big Dicks…">
+
+<label for="name">Display name</label>
+<input id="name" required placeholder="What should KK call you?">
+
+<label for="email">Email address</label>
+<input id="email" type="email" required placeholder="Where should KK send your access?">
+
+<label for="method">Payment method</label>
+<select id="method" required><option value="">Choose one</option><option>Venmo</option><option>Cash App</option></select>
+
+<label for="paymentName">Name / username shown on payment</label>
+<input id="paymentName" required placeholder="So KK can match your payment">
+
+<label><input id="confirm" type="checkbox" required style="width:auto"> I confirm that I am 18 or older and that I have sent payment for the access selected.</label>
+
+<p class="small">Your information is used to verify your payment and provide access. Please allow up to 24 hours after submission for manual verification.</p>
+<button type="submit">💗 I Paid — Send My Request</button>
+</form>
+</section>
+
+<footer>
+<a href="disclaimer.html">18+ • Disclaimer • Terms • Privacy</a> &nbsp;|&nbsp;
+<a href="mailto:info@kinkykorean.blog">Contact</a>
+<p>© 2026 The Kinky Korean. Private. Personal. Unfiltered.</p>
+</footer>
+</section></main>
+
+<script>
+function pick(value,id){
+ document.getElementById('plan').value=value;
+ document.querySelectorAll('.card').forEach(x=>x.classList.remove('selected'));
+ document.getElementById(id).classList.add('selected');
+ document.getElementById('request').scrollIntoView({behavior:'smooth'});
+}
+document.getElementById('accessForm').addEventListener('submit',function(e){
+ e.preventDefault();
+ const data={
+  plan:document.getElementById('plan').value,
+  entry:document.getElementById('entry').value,
+  name:document.getElementById('name').value,
+  email:document.getElementById('email').value,
+  method:document.getElementById('method').value,
+  paymentName:document.getElementById('paymentName').value
+ };
+ sessionStorage.setItem('kkAccessRequest',JSON.stringify(data));
+ window.location.href='access-received.html';
+});
+</script>
+</body></html>
