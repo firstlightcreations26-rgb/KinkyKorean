@@ -71,3 +71,38 @@ footer{padding:25px 20px 45px;text-align:center;color:#9f9198;font-size:12px}.ti
 /* KK payment tip jar */
 .entry-tip{color:var(--ink);margin:0}.entry-tip>span{display:block;font-size:25px;font-weight:700}.entry-tip small{display:block;color:var(--muted);font-family:"DM Sans";font-size:11px;margin:2px 0 10px}.tip-actions{display:flex;gap:8px;flex-wrap:wrap}.tip-pay{display:inline-block;padding:9px 13px;border-radius:999px;background:var(--ink);color:#fff!important;font-family:"DM Sans";font-size:12px;font-weight:700}.home-tip a{color:var(--pink);text-decoration:underline;text-underline-offset:3px}.archive-grid{align-items:stretch}
 .voice-sample{margin:18px 0;padding:16px;border:1px dashed #d487a4;border-radius:14px;background:#fff8fb;display:flex;gap:14px;align-items:center;flex-wrap:wrap}.voice-sample audio,.home-tip audio,.entry-voice audio{max-width:100%;height:36px}.home-tip audio{vertical-align:middle;margin:0 8px}.entry-voice{margin:24px 0;padding:18px;border:1px dashed #d487a4;border-radius:14px;background:#fff7fb}.entry-voice strong{display:block;margin-bottom:8px}.archive-card.locked{background:#171217;color:#fff}.archive-card.locked p{color:#eadde4}.archive-card.locked b{color:#ff9fc5}
+
+
+/* ===== KK scrapbook diary refresh ===== */
+.site-shell{background:
+ radial-gradient(circle at 15% 10%,#5b3043 0,transparent 24%),
+ radial-gradient(circle at 85% 35%,#3b2530 0,transparent 22%),
+ #171116}
+.book{max-width:1120px;padding:45px 55px 65px;background:#ead6c5;box-shadow:0 24px 70px #0009;transform:rotate(-.25deg);border-radius:4px}
+.book:before,.book:after{content:"";position:absolute;top:0;bottom:0;width:50%;pointer-events:none;box-shadow:inset 0 0 45px #6b493133}
+.book:before{left:0}.book:after{right:0}
+.intro-page{position:relative;border:1px solid #d9c4b8}
+.intro-page:before{content:"";position:absolute;top:-17px;left:42%;width:125px;height:34px;background:#f0d5c5aa;transform:rotate(-4deg);box-shadow:0 2px 4px #0002}
+.intro-page:after{content:"💋";position:absolute;right:28px;bottom:20px;font-size:50px;transform:rotate(-17deg);opacity:.65}
+.sticky{z-index:3;border:1px solid #d8c15d}
+.archive-grid{gap:28px;padding:10px}
+.archive-card{border-radius:2px;box-shadow:5px 10px 22px #0007;border:1px solid #e7d9de;overflow:visible}
+.archive-card:before{content:"";position:absolute;width:82px;height:25px;background:#efcfbfaa;top:-12px;left:calc(50% - 41px);transform:rotate(-3deg);box-shadow:0 1px 3px #0002}
+.archive-card:nth-child(odd){transform:rotate(-1.2deg)}.archive-card:nth-child(even){transform:rotate(1.1deg)}
+.archive-card.locked:before{background:#b99aa755}
+.archive-card.locked:after{content:"🔒";position:absolute;right:18px;top:18px;font-size:25px}
+.section-heading:after{content:"~ ♥ ~";display:block;font-family:"Caveat";font-size:27px;color:#f7b7cf;margin:-25px 0 25px}
+.voice-card{position:relative;transform:rotate(.35deg);border:1px solid #e6a9c0}
+.voice-card:before{content:"";position:absolute;top:-15px;left:80px;width:120px;height:31px;background:#eed1c2aa;transform:rotate(-5deg)}
+.plans .plan:nth-child(1){transform:rotate(-1deg)}.plans .plan:nth-child(3){transform:rotate(1deg)}
+.plan{border-radius:2px}.plan:after{content:"♡";position:absolute;right:16px;bottom:8px;font-family:"Caveat";font-size:30px;color:#d9487877}
+.mini-card{border-radius:2px;box-shadow:5px 8px 20px #0005}
+.entry-wrap{background:
+ radial-gradient(circle at 10% 20%,#513141 0,transparent 24%),
+ radial-gradient(circle at 90% 70%,#3a2530 0,transparent 25%),#171116}
+.entry-page{position:relative;box-shadow:8px 18px 50px #0009;border:1px solid #ddc9cf;transform:rotate(-.25deg)}
+.entry-page:before{content:"";position:absolute;top:-16px;left:38%;width:140px;height:33px;background:#efd4c5b8;transform:rotate(-3deg);box-shadow:0 2px 4px #0002}
+.entry-page:after{content:"♡  xoxo";position:absolute;right:38px;bottom:115px;font-family:"Caveat";font-size:24px;color:#d9487888;transform:rotate(-8deg)}
+.listen-moment{position:relative;box-shadow:3px 5px 10px #7c536022}
+.listen-moment:after{content:"🎧";position:absolute;right:13px;top:12px;font-size:22px}
+@media(max-width:800px){.book{padding:35px 18px 45px;margin-top:25px}.intro-page{transform:none}.archive-grid{padding:3px;gap:22px}.archive-card:nth-child(n){transform:none}.entry-page{transform:none}}
