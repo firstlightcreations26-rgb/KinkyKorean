@@ -1,9 +1,70 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Your Letter Reached KK</title><style>
-body{margin:0;background:linear-gradient(135deg,#e6a5be,#f8d6e3);color:#291820;font-family:Georgia,serif}.desk{max-width:740px;margin:45px auto;padding:20px}.paper{background:#fffaf5;padding:50px;box-shadow:0 22px 50px rgba(60,24,41,.3);border:1px solid #c996aa;background-image:repeating-linear-gradient(to bottom,transparent 0,transparent 31px,rgba(205,125,157,.2) 32px,transparent 33px)}.script{font-family:"Bradley Hand","Segoe Print","Comic Sans MS",cursive}h1{font-size:3.1rem;color:#b93670;transform:rotate(-2deg)}.letter{background:#ffe5ef;padding:22px;border-left:5px solid #b93670;box-shadow:4px 5px 12px #d0a8b8;margin:28px 0;transform:rotate(.7deg)}a{color:#a1265b}.kiss{text-align:right;font-size:3.4rem}</style></head>
-<body><div class="desk"><main class="paper"><div class="kiss">💋</div><p class="script">sealed & tucked away…</p>
-<h1 class="script">Your letter is inside my diary. 💌</h1>
-<div class="letter"><strong>Dear handsome,</strong><p>I got your private message.</p><p>Your payment and letter will be personally reviewed. Keep an eye on the email address you gave me for anything I send back.</p></div>
-<p id="who"></p><p class="script"><strong>Thank you for trusting me with a little piece of what's on your mind. ♡</strong></p>
-<p class="script">— KK<br>The Kinky Korean</p><hr><p><a href="index.html">← back to my diary</a> · <a href="disclaimer.html">18+ / Disclaimer</a></p>
-</main></div><script>try{const d=JSON.parse(sessionStorage.getItem('kkDearMessage'));if(d){document.getElementById('who').innerHTML='💌 For <strong>'+d.name.replace(/</g,'&lt;')+'</strong><br>Contact email: <strong>'+d.email.replace(/</g,'&lt;')+'</strong>'}}catch(e){}</script></body></html>
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Dear KK… | The Kinky Korean</title>
+<style>
+:root{--ink:#291820;--rose:#b93670;--paper:#fffaf5;--pink:#efb5cc;--line:rgba(205,125,157,.24)}
+*{box-sizing:border-box} body{margin:0;background:linear-gradient(135deg,#e5a4bd,#f8d6e3);color:var(--ink);font-family:Georgia,serif}
+.desk{max-width:980px;margin:34px auto;padding:20px}
+.book{background:var(--paper);min-height:760px;padding:48px 56px;position:relative;box-shadow:0 25px 55px rgba(50,20,34,.28);border:1px solid #c995a9;
+background-image:repeating-linear-gradient(to bottom,transparent 0,transparent 31px,var(--line) 32px,transparent 33px)}
+.book:before{content:"";position:absolute;left:36px;top:0;bottom:0;border-left:2px solid rgba(214,91,137,.25)}
+.script{font-family:"Bradley Hand","Segoe Print","Comic Sans MS",cursive}
+h1{font-size:4rem;color:var(--rose);margin:0;transform:rotate(-2deg)}
+.intro{max-width:650px;font-size:1.08rem}.kiss{position:absolute;right:48px;top:35px;font-size:4rem;transform:rotate(13deg)}
+.envelope{background:#fff;border:1px solid #c79aab;box-shadow:5px 7px 15px rgba(50,20,34,.14);padding:27px;margin:32px auto;max-width:720px;position:relative;transform:rotate(.5deg)}
+.tape{position:absolute;top:-14px;left:44%;width:100px;height:28px;background:rgba(246,197,214,.8);transform:rotate(-4deg)}
+.price{float:right;background:#25191f;color:#ffbad4;padding:10px 14px;transform:rotate(3deg);font-weight:bold}
+label{display:block;font-family:"Bradley Hand","Segoe Print",cursive;font-weight:bold;margin-top:16px}
+input,textarea,select{width:100%;font:inherit;color:var(--ink);background:transparent;border:0;border-bottom:2px solid #c989a2;padding:10px 5px;outline:none}
+textarea{min-height:190px;border:1px solid #d7a5b8;margin-top:8px;background:rgba(255,248,251,.72);resize:vertical}
+.payrow{text-align:center;margin:22px 0}.pay{display:inline-block;background:var(--rose);color:#fff;text-decoration:none;padding:11px 18px;margin:4px;border-radius:3px;font-weight:bold}
+button{background:#25191f;color:#ffbdd5;border:0;padding:13px 22px;font:bold 1rem Georgia,serif;cursor:pointer}
+.note{background:#ffe4ef;border-left:5px solid var(--rose);padding:15px;margin:18px 0}
+.small{font-size:.86rem;line-height:1.5}.check{display:flex;gap:8px;margin:17px 0}.check input{width:auto}
+footer{text-align:center;font-size:.82rem;margin-top:30px}.heart{font-size:1.4rem;letter-spacing:7px}
+@media(max-width:700px){.book{padding:38px 25px 38px 43px}h1{font-size:3rem}.kiss{right:20px;font-size:2.7rem}}
+</style></head>
+<body><div class="desk"><main class="book">
+<div class="kiss">💋</div><div class="script">a private page just for you…</div>
+<h1 class="script">Dear KK…</h1>
+<div class="intro">
+<p>So you have something you want to tell me?</p>
+<p>Maybe it's something you wouldn't say out loud. Maybe you're curious about me. Maybe you've been reading my diary and there's something you <em>really</em> want to ask.</p>
+<p class="script"><strong>Write it here, handsome.<br>This stays between you and KK. 💋</strong></p>
+</div>
+<div class="heart">♡ ✉ ♡ ✎ ♡</div>
+
+<section class="envelope">
+<div class="tape"></div><div class="price">$10</div>
+<h2 class="script" style="color:#b93670;font-size:2rem">💌 Send KK a Private Message</h2>
+<p class="small">Send payment first, then tuck your letter into the form below so I can match it to you.</p>
+<div class="payrow">
+<a class="pay" href="https://venmo.com/u/kinkykorean" target="_blank" rel="noopener">Venmo<br>@kinkykorean</a>
+<a class="pay" href="https://cash.app/$Kinkykorean" target="_blank" rel="noopener">Cash App<br>$Kinkykorean</a>
+</div>
+
+<form id="dearForm">
+<label>What should I call you?</label><input id="name" required placeholder="your display name…">
+<label>Where can I reach you? 💌</label><input id="email" type="email" required placeholder="your email…">
+<label>How did you pay?</label><select id="method" required><option value="">choose one…</option><option>Venmo</option><option>Cash App</option></select>
+<label>What name shows on the payment?</label><input id="paymentName" required placeholder="username / payment name…">
+<label>Dear KK…</label><textarea id="message" required maxlength="4000" placeholder="write your private letter here…"></textarea>
+<div class="note small">💗 Your message is meant for KK. Payment and messages are manually reviewed. Sending a message does not guarantee an immediate or specific response.</div>
+<div class="check"><input id="adult" type="checkbox" required><span class="small">I confirm that I am 18 or older and that I sent the $10 payment for this private message.</span></div>
+<button type="submit">seal my letter 💌</button>
+</form>
+</section>
+
+<p class="script" style="text-align:right;font-size:1.15rem">I'll see what's inside… — KK ♡</p>
+<footer><a href="index.html">← back to the diary</a> · <a href="disclaimer.html">18+ • Disclaimer • Terms • Privacy</a> · <a href="mailto:DearKK@kinkykorean.blog">DearKK@kinkykorean.blog</a>
+<p>© 2026 The Kinky Korean · Private. Personal. Unfiltered.</p></footer>
+</main></div>
+<script>
+document.getElementById('dearForm').addEventListener('submit',function(e){
+ e.preventDefault();
+ const d={name:name.value,email:email.value,method:method.value,paymentName:paymentName.value,message:message.value};
+ sessionStorage.setItem('kkDearMessage',JSON.stringify(d));
+ location.href='dear-kk-received.html';
+});
+</script></body></html>
