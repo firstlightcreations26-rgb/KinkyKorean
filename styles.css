@@ -235,3 +235,8 @@ footer{padding:25px 20px 45px;text-align:center;color:#9f9198;font-size:12px}.ti
 .bow-right{left:61px;border-radius:30% 70% 35% 65%;transform:rotate(-23deg)}
 .bow-knot{position:absolute;left:50%;top:25px;width:32px;height:30px;transform:translateX(-50%) rotate(45deg);border-radius:9px;background:#e36e98;border:2px solid #a94369;z-index:3}
 .coming-soon{display:inline-block;margin:5px auto 12px;padding:6px 15px;background:#211820;color:#ffd8e6;font-family:"Caveat",cursive;font-size:21px;letter-spacing:2px;transform:rotate(-2deg);box-shadow:3px 4px 0 #d86b94}
+
+/* What's included with Unfiltered */
+.unfiltered-intro{margin-bottom:14px!important}
+.unfiltered-includes{text-align:left;margin:0 auto 20px;padding:14px 15px;background:#fff8fb99;border:1px dashed #c9688d;border-radius:12px;font-size:13px;line-height:1.55}
+.unfiltered-includes div+div{margin-top:5px}
