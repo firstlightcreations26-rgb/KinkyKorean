@@ -205,3 +205,19 @@ footer{padding:25px 20px 45px;text-align:center;color:#9f9198;font-size:12px}.ti
  .entry-page:before{left:5px}
  .entry-page:after{left:-11px}
 }
+
+
+/* ===== Restore original KK landing cover (keep realistic diary pages) ===== */
+.cover{min-height:100svh;display:grid;place-items:center;padding:24px;background:radial-gradient(circle at 50% 20%,#443039 0,#21191e 42%,#120f12 100%);overflow:visible}
+.notebook-cover{width:min(430px,92vw);min-height:680px;border-radius:18px 24px 20px 14px;background:linear-gradient(145deg,#ffb9d2,#f28fb4 48%,#d95d89);box-shadow:18px 24px 60px #0008,inset 0 0 0 2px #ffffff33;position:relative;overflow:hidden;transform:none;border:0}
+.notebook-cover:before{content:"";position:absolute;left:32px;top:0;bottom:0;width:3px;background:#b83e6d55;box-shadow:8px 0 #fff3}
+.cover-sheen{display:block;position:absolute;inset:-30% -20%;background:linear-gradient(110deg,transparent 35%,#fff4 45%,transparent 54%);transform:rotate(8deg)}
+.cover-content{position:relative;padding:72px 44px;text-align:center;height:100%;display:flex;min-height:680px;flex-direction:column;align-items:center}
+.cover-content:before,.cover-content:after{content:none}
+.cover .tiny{font-size:11px;letter-spacing:4px;font-weight:700;opacity:.65;background:none;border:0;padding:0;transform:none;box-shadow:none}
+.cover .heart{font-size:48px;line-height:1;margin:35px 0 8px;text-shadow:0 4px 10px #9a315755;color:inherit}
+.cover h1{font-size:70px;line-height:.82;margin:8px 0 20px;letter-spacing:1px;color:var(--ink);text-shadow:none}
+.cover p{font-family:"Caveat";font-size:25px;margin:0 0 42px;color:var(--ink)}
+.open-btn{background:#211820;color:#fff;font-family:"DM Sans",Arial,sans-serif;font-size:inherit;font-weight:700;border:0;box-shadow:0 8px 20px #6f234633;padding:14px 23px}
+.cover-note{margin-top:auto;font-size:18px;opacity:.7;background:none;padding:0;transform:none;box-shadow:none;color:inherit}
+@media(max-width:800px){.notebook-cover{min-height:680px}.cover-content{min-height:680px;padding:72px 44px}.cover h1{font-size:58px}}
