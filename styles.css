@@ -221,3 +221,6 @@ footer{padding:25px 20px 45px;text-align:center;color:#9f9198;font-size:12px}.ti
 .open-btn{background:#211820;color:#fff;font-family:"DM Sans",Arial,sans-serif;font-size:inherit;font-weight:700;border:0;box-shadow:0 8px 20px #6f234633;padding:14px 23px}
 .cover-note{margin-top:auto;font-size:18px;opacity:.7;background:none;padding:0;transform:none;box-shadow:none;color:inherit}
 @media(max-width:800px){.notebook-cover{min-height:680px}.cover-content{min-height:680px;padding:72px 44px}.cover h1{font-size:58px}}
+
+/* Unfiltered-only voice notes */
+.voice-locked{display:grid!important;gap:7px}.voice-locked span{color:#755a66}.voice-unlock{display:inline-block;width:max-content;max-width:100%;background:#211820;color:#fff!important;padding:9px 15px;border-radius:999px;font-family:"DM Sans",Arial,sans-serif;font-size:12px;font-weight:700;text-decoration:none}.voice-unlock:hover{transform:translateY(-1px)}
