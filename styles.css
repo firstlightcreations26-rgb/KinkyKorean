@@ -109,3 +109,47 @@ footer{padding:25px 20px 45px;text-align:center;color:#9f9198;font-size:12px}.ti
 
 /* KK back navigation */
 .kk-back-wrap{max-width:780px;margin:0 auto 14px}.kk-back-btn{border:1px solid #ffffff33;background:#2a2026;color:#ffdbe8;padding:10px 17px;border-radius:999px;font-family:"Caveat",cursive;font-size:20px;cursor:pointer;box-shadow:0 5px 15px #0004}.kk-back-btn:hover{background:#f7b7cf;color:#211820}
+
+
+/* ===== Reference-inspired pink diary landing + first page ===== */
+.cover{background:#f8d7e3;padding:22px;overflow:hidden}
+.notebook-cover{width:min(760px,94vw);min-height:720px;border-radius:8px;background:
+ linear-gradient(90deg,transparent 0 54px,#e59ab6 55px 58px,transparent 59px),
+ repeating-linear-gradient(0deg,#f5aec8 0,#f5aec8 3px,#f8b8cf 4px,#f8b8cf 7px);
+ border:10px solid #ef9fbd;box-shadow:12px 16px 0 #bd6988,18px 25px 45px #8e496a66;transform:rotate(-.7deg)}
+.notebook-cover:before{left:40px;width:5px;background:#c9668e;box-shadow:-13px 0 0 #fff7,13px 0 0 #fff4}
+.cover-sheen{display:none}
+.cover-content{min-height:700px;padding:55px 55px 42px 90px}
+.cover-content:before{content:"♡  PRIVATE  ♡";font-family:"Caveat",cursive;position:absolute;top:30px;right:38px;font-size:24px;transform:rotate(5deg);color:#a83d67}
+.cover-content:after{content:"💋";position:absolute;right:40px;bottom:40px;font-size:62px;transform:rotate(-16deg);filter:saturate(.7)}
+.cover .tiny{background:#fff3f7;border:2px dashed #b9567e;padding:8px 18px;transform:rotate(-2deg);box-shadow:3px 4px 0 #d982a3;font-size:13px}
+.cover .heart{font-size:62px;color:#a93261;margin:28px 0 5px}
+.cover h1{font-size:88px;line-height:.78;color:#25171f;text-shadow:2px 3px 0 #fff6}
+.cover p{font-size:30px;color:#56313f;margin-bottom:30px}
+.open-btn{font-family:"Caveat",cursive;font-size:25px;background:#211820;border:3px solid #fff;color:#fff;box-shadow:5px 7px 0 #b34f76;padding:13px 30px}
+.cover-note{background:#fff4f7;padding:10px 18px;transform:rotate(1.5deg);box-shadow:3px 5px 10px #7f3d5744;color:#6d344a;font-size:22px}
+.book{background:#d990a9;padding:48px 62px 70px;border:8px solid #bd6687;box-shadow:14px 18px 0 #733c5366,0 28px 70px #0009}
+.book:before{background:#fff8f3;left:15px;top:18px;bottom:18px;width:calc(50% - 15px);box-shadow:inset -25px 0 35px #7b4d5730}
+.book:after{background:#fff8f3;right:15px;top:18px;bottom:18px;width:calc(50% - 15px);box-shadow:inset 25px 0 35px #7b4d5730}
+.intro-page{z-index:2;max-width:850px;padding:60px 70px 70px;background-color:#fffaf7;background-image:repeating-linear-gradient(to bottom,transparent 0,transparent 31px,#e6cbd5 32px);border:1px solid #d8bdc7;box-shadow:4px 8px 25px #63394b55}
+.intro-page:before{top:-20px;left:34%;width:150px;height:38px;background:#efc3cfcc}
+.intro-page h2{font-size:62px;line-height:.95}
+.intro-page p{font-size:27px}
+.intro-page .page-label{display:inline-block;background:#f7b7cf;padding:5px 13px;color:#6c2945;transform:rotate(-2deg)}
+.page-btn{font-family:"Caveat",cursive;font-size:24px;box-shadow:4px 5px 0 #d37c9d}
+.sticky{right:-25px;top:75px;background:#f7b4ce;border:0;box-shadow:5px 7px 15px #4d263a55;transform:rotate(5deg);z-index:5}
+.entry-body{background:#f0b7cc}
+.entry-wrap{background:
+ linear-gradient(90deg,#c87697 0 4%,transparent 4% 96%,#c87697 96%),
+ #e9a7c0;padding-top:45px}
+.entry-page{max-width:860px;background-color:#fffaf7;background-image:repeating-linear-gradient(to bottom,transparent 0,transparent 31px,#e6cbd5 32px);border:8px solid #f4d2de;box-shadow:12px 16px 0 #a8587866,0 25px 60px #67344766;padding:65px 72px 80px}
+.entry-page h1{font-size:68px}
+.entry-page p{font-size:27px}
+.entry-page .page-label{display:inline-block;background:#f7b7cf;padding:5px 13px;color:#6c2945;transform:rotate(-2deg)}
+.listen-moment{background:#f8dce7;border:2px dashed #c75f89;border-left:6px solid #c75f89;box-shadow:4px 5px 0 #d998b1}
+@media(max-width:800px){
+ .notebook-cover{min-height:650px}.cover-content{min-height:630px;padding:52px 25px 35px 65px}.cover h1{font-size:65px}
+ .book{padding:38px 18px 48px;border-width:5px}.book:before,.book:after{display:none}
+ .intro-page{padding:48px 27px 55px}.intro-page h2{font-size:48px}.intro-page p{font-size:24px}
+ .entry-page{padding:50px 27px 65px;border-width:5px}.entry-page h1{font-size:52px}.entry-page p{font-size:24px}
+}
