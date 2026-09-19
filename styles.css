@@ -153,3 +153,55 @@ footer{padding:25px 20px 45px;text-align:center;color:#9f9198;font-size:12px}.ti
  .intro-page{padding:48px 27px 55px}.intro-page h2{font-size:48px}.intro-page p{font-size:24px}
  .entry-page{padding:50px 27px 65px;border-width:5px}.entry-page h1{font-size:52px}.entry-page p{font-size:24px}
 }
+
+
+/* ===== Realistic torn-out notebook sheets ===== */
+.entry-page{
+  border:0;
+  border-radius:1px;
+  overflow:visible;
+  position:relative;
+  filter:drop-shadow(8px 14px 12px #63344755);
+  clip-path:polygon(
+    0 0,100% 0,100% 98.7%,99.2% 99.1%,98.3% 98.8%,97.4% 99.4%,96.4% 98.9%,95.3% 99.5%,94.1% 98.8%,92.8% 99.3%,91.6% 98.9%,90.3% 99.5%,89% 98.8%,87.6% 99.4%,86.2% 98.9%,84.8% 99.5%,83.2% 98.8%,81.8% 99.4%,80.2% 98.9%,78.5% 99.5%,76.9% 98.8%,75.2% 99.4%,73.5% 98.9%,71.8% 99.5%,70.1% 98.8%,68.4% 99.4%,66.7% 98.9%,65% 99.5%,63.2% 98.8%,61.4% 99.4%,59.6% 98.9%,57.8% 99.5%,56% 98.8%,54.2% 99.4%,52.4% 98.9%,50.6% 99.5%,48.8% 98.8%,47% 99.4%,45.2% 98.9%,43.4% 99.5%,41.6% 98.8%,39.8% 99.4%,38% 98.9%,36.2% 99.5%,34.4% 98.8%,32.6% 99.4%,30.8% 98.9%,29% 99.5%,27.2% 98.8%,25.4% 99.4%,23.6% 98.9%,21.8% 99.5%,20% 98.8%,18.2% 99.4%,16.4% 98.9%,14.6% 99.5%,12.8% 98.8%,11% 99.4%,9.2% 98.9%,7.4% 99.5%,5.6% 98.8%,3.8% 99.4%,2% 98.9%,0 99.5%
+  );
+}
+.entry-page:before{
+  content:"";
+  position:absolute;
+  left:12px;top:34px;bottom:45px;width:24px;
+  background:
+    radial-gradient(circle at 50% 12px,#e6a7bd 0 5px,#8f5268 5.5px 7px,transparent 7.5px) 0 0/24px 38px repeat-y;
+  opacity:.9;
+  z-index:4;
+  pointer-events:none;
+  transform:none;
+  box-shadow:none;
+}
+.entry-page:after{
+  content:"";
+  position:absolute;
+  left:-10px;top:28px;bottom:38px;width:20px;
+  background:
+    linear-gradient(135deg,transparent 0 42%,#fffaf7 43% 58%,transparent 59%) 0 0/20px 22px repeat-y;
+  opacity:.95;
+  z-index:3;
+  pointer-events:none;
+  transform:none;
+}
+.entry-page h1,.entry-page .page-label,.entry-page .eyebrow,.entry-page p,.entry-page>div:not(.kk-back-wrap){position:relative;z-index:5}
+.entry-page{padding-left:88px}
+.entry-page .page-label:after{content:"  ✎";font-family:"Caveat",cursive}
+.entry-wrap:before{
+  content:"";
+  position:fixed;inset:70px 0 0;
+  pointer-events:none;
+  background-image:radial-gradient(#fff3 1px,transparent 1px);
+  background-size:7px 7px;
+  opacity:.18
+}
+@media(max-width:800px){
+ .entry-page{padding-left:58px}
+ .entry-page:before{left:5px}
+ .entry-page:after{left:-11px}
+}
