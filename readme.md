@@ -1,4 +1,5 @@
-[README.md](https://github.com/user-attachments/files/32396205/README.md)
+[README.md](https://github.com/user-attachments/files/32407555/README.md)
+[README.md](https://github.com/user-attachments/files/32407557/README.md)
 # The Kinky Korean — GitHub Pages Starter
 
 This is the first visual/interactive starter for **The Kinky Korean** diary site.
