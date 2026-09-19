@@ -224,3 +224,14 @@ footer{padding:25px 20px 45px;text-align:center;color:#9f9198;font-size:12px}.ti
 
 /* Unfiltered-only voice notes */
 .voice-locked{display:grid!important;gap:7px}.voice-locked span{color:#755a66}.voice-unlock{display:inline-block;width:max-content;max-width:100%;background:#211820;color:#fff!important;padding:9px 15px;border-radius:999px;font-family:"DM Sans",Arial,sans-serif;font-size:12px;font-weight:700;text-decoration:none}.voice-unlock:hover{transform:translateY(-1px)}
+
+/* Private Extras — wrapped up until launch */
+.extras-coming{position:relative;overflow:visible!important;padding-top:54px!important}
+.extras-coming:before{content:"";position:absolute;top:0;bottom:0;left:50%;width:24px;transform:translateX(-50%);background:linear-gradient(90deg,#d86b94,#f6abc6 45%,#c95380);opacity:.78;z-index:0}
+.extras-coming>*:not(.gift-ribbon){position:relative;z-index:2}
+.gift-ribbon{position:absolute;left:50%;top:-31px;width:126px;height:82px;transform:translateX(-50%);z-index:4;filter:drop-shadow(0 5px 4px #7c345255)}
+.bow-left,.bow-right{position:absolute;top:18px;width:54px;height:38px;background:linear-gradient(145deg,#f7b1cb,#cf557f);border:2px solid #a94369}
+.bow-left{right:61px;border-radius:70% 30% 65% 35%;transform:rotate(23deg)}
+.bow-right{left:61px;border-radius:30% 70% 35% 65%;transform:rotate(-23deg)}
+.bow-knot{position:absolute;left:50%;top:25px;width:32px;height:30px;transform:translateX(-50%) rotate(45deg);border-radius:9px;background:#e36e98;border:2px solid #a94369;z-index:3}
+.coming-soon{display:inline-block;margin:5px auto 12px;padding:6px 15px;background:#211820;color:#ffd8e6;font-family:"Caveat",cursive;font-size:21px;letter-spacing:2px;transform:rotate(-2deg);box-shadow:3px 4px 0 #d86b94}
