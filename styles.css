@@ -106,3 +106,6 @@ footer{padding:25px 20px 45px;text-align:center;color:#9f9198;font-size:12px}.ti
 .listen-moment{position:relative;box-shadow:3px 5px 10px #7c536022}
 .listen-moment:after{content:"🎧";position:absolute;right:13px;top:12px;font-size:22px}
 @media(max-width:800px){.book{padding:35px 18px 45px;margin-top:25px}.intro-page{transform:none}.archive-grid{padding:3px;gap:22px}.archive-card:nth-child(n){transform:none}.entry-page{transform:none}}
+
+/* KK back navigation */
+.kk-back-wrap{max-width:780px;margin:0 auto 14px}.kk-back-btn{border:1px solid #ffffff33;background:#2a2026;color:#ffdbe8;padding:10px 17px;border-radius:999px;font-family:"Caveat",cursive;font-size:20px;cursor:pointer;box-shadow:0 5px 15px #0004}.kk-back-btn:hover{background:#f7b7cf;color:#211820}
