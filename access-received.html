@@ -1,6 +1,27 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Almost Unlocked | KK</title>
-<style>body{margin:0;background:linear-gradient(135deg,#e7a7bf,#f7d4e1);color:#281821;font-family:Georgia,serif}.desk{max-width:760px;margin:45px auto;padding:20px}.paper{background:#fffaf5;padding:48px;box-shadow:0 22px 50px #80586a;border:1px solid #c897aa;background-image:repeating-linear-gradient(to bottom,transparent 0,transparent 31px,rgba(214,151,174,.2) 32px,transparent 33px)}h1{font-family:"Bradley Hand","Segoe Print",cursive;color:#b72f6b;font-size:2.8rem;transform:rotate(-2deg)}.note{background:#ffe4ef;padding:22px;box-shadow:4px 5px 10px #c9a8b4;transform:rotate(1deg);margin:25px 0}.script{font-family:"Bradley Hand","Segoe Print",cursive}.kiss{text-align:right;font-size:3rem}a{color:#a51f5a}</style></head>
+<style>body{margin:0;background:linear-gradient(135deg,#e7a7bf,#f7d4e1);color:#281821;font-family:Georgia,serif}.desk{max-width:760px;margin:45px auto;padding:20px}.paper{background:#fffaf5;padding:48px;box-shadow:0 22px 50px #80586a;border:1px solid #c897aa;background-image:repeating-linear-gradient(to bottom,transparent 0,transparent 31px,rgba(214,151,174,.2) 32px,transparent 33px)}h1{font-family:"Bradley Hand","Segoe Print",cursive;color:#b72f6b;font-size:2.8rem;transform:rotate(-2deg)}.note{background:#ffe4ef;padding:22px;box-shadow:4px 5px 10px #c9a8b4;transform:rotate(1deg);margin:25px 0}.script{font-family:"Bradley Hand","Segoe Print",cursive}.kiss{text-align:right;font-size:3rem}a{color:#a51f5a}.help{border-top:1px dashed #c897aa;margin-top:28px;padding-top:20px}</style></head>
 <body><div class="desk"><main class="paper"><div class="kiss">💋</div><p class="script">a little note from KK…</p><h1>Your secret is almost unlocked…</h1>
-<p>Thank you for wanting a little more of me. ♡</p><div class="note"><strong>💌 I got your request.</strong><p>Every payment and membership is personally verified, so please allow me <strong>up to 24 hours</strong> to send your private access.</p></div>
-<p id="details"></p><p>Once everything matches, your access information will arrive at the email you gave me.</p><p class="script"><strong>Check your inbox… I'll be there soon. 💋</strong></p><p class="script">— KK<br>The Kinky Korean</p><hr><p><a href="index.html">← sneak back to the diary</a> · <a href="disclaimer.html">18+ / Disclaimer</a></p></main></div>
-<script>try{const d=JSON.parse(sessionStorage.getItem('kkAccessRequest'));if(d){document.getElementById('details').innerHTML='<strong>'+d.plan+'</strong><br>'+(d.entry?'📖 '+d.entry+'<br>':'')+'Access email: <strong>'+d.email.replace(/</g,'&lt;')+'</strong>'}}catch(e){}</script></body></html>
+<p>Thank you for wanting a little more of me. ♡</p>
+<div class="note"><strong>💌 I got your request.</strong><p>Every payment and membership is personally verified, so please allow me <strong>up to 24 hours</strong> to send your private access.</p></div>
+<p id="details"></p>
+<p>Once everything matches, your access information will arrive at the email you gave me.</p>
+<p class="script"><strong>Check your inbox… I'll be there soon. 💋</strong></p>
+<div class="help"><p class="script"><strong>Forgot the memo or need to correct something?</strong></p><p>Email <a href="mailto:info@kinkykorean.blog">info@kinkykorean.blog</a> with the name you paid under, payment method, amount, and what the payment was for. <strong>We'll get back to you within 24 hours.</strong></p></div>
+<p class="script">— KK<br>The Kinky Korean</p><hr><p><a href="index.html">← sneak back to the diary</a> · <a href="disclaimer.html">18+ / Disclaimer</a></p></main></div>
+<script>
+function esc(s){return String(s||'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
+try{
+  const d=JSON.parse(sessionStorage.getItem('kkAccessRequest'));
+  if(d){
+    document.getElementById('details').innerHTML=
+      '<strong>'+esc(d.plan)+'</strong><br>'+
+      (d.entry?'📖 '+esc(d.entry)+'<br>':'')+
+      'Access email: <strong>'+esc(d.email)+'</strong><br>'+
+      'Payment method: <strong>'+esc(d.method)+'</strong><br>'+
+      'Payment name: <strong>'+esc(d.paymentName)+'</strong><br>'+
+      'Amount: <strong>'+esc(d.amount)+'</strong><br>'+
+      'Payment date: <strong>'+esc(d.paymentDate)+'</strong><br>'+
+      'Memo: <strong>'+esc(d.memo)+'</strong>';
+  }
+}catch(e){}
+</script></body></html>
