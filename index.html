@@ -26,10 +26,7 @@
   </main>
 
   <section id="diary" class="site-shell hidden">
-    <header class="topbar">
-      <a class="brand" href="index.html">THE KINKY KOREAN</a>
-      <nav class="kk-nav"><details class="nav-menu"><summary>☰ Diary Menu</summary><div class="nav-drop"><a href="archive.html">📖 Diary Archive</a><a href="access.html">💗 Choose Your Access</a><a href="voice.html">🎧 KK's Voice</a><a href="private.html">💌 Private Side</a><a href="quiz.html">🎀 How Well Do You Know KK?</a></div></details></nav>
-    </header>
+    <header class="topbar"><a class="brand" href="index.html">THE KINKY KOREAN</a><span style="font-family:Caveat,cursive;color:#ffdbe8;font-size:20px">♡ my private diary ♡</span></header>
 
     <div class="book">
       <article class="paper intro-page">
@@ -51,50 +48,7 @@
         <p>Some pages are free.<br>The really interesting ones are locked.</p>
       </aside>
     </div>
-
-    <section class="section category-hub">
-      <div class="section-heading"><span>♡ PICK A PAGE ♡</span><h2>Where do you want to snoop?</h2></div>
-      <div class="category-grid">
-        <a class="category-card" href="archive.html"><span>📖</span><h3>Diary Archive</h3><p>Free, locked and Unfiltered diary pages.</p><b>Open the archive →</b></a>
-        <a class="category-card" href="access.html"><span>💗</span><h3>Choose Your Access</h3><p>Daily, Unfiltered or a single diary entry.</p><b>See access →</b></a>
-        <a class="category-card" href="voice.html"><span>🎧</span><h3>KK's Voice</h3><p>Little LISTEN moments and five special voice entries.</p><b>Peek inside →</b></a>
-        <a class="category-card" href="private.html"><span>💌</span><h3>Private Side</h3><p>Dear KK, Private Extras, KK Check-In and Behind the Diary.</p><b>Go private →</b></a>
-        <a class="category-card" href="quiz.html"><span>🎀</span><h3>How Well Do You Know KK?</h3><p>Think you've actually been paying attention?</p><b>Take the secret test →</b></a>
-      </div>
-    </section>
-
-    <footer>
-      <div class="tipjar home-tip">🫙 <span>KK's Tiny Tip Jar</span> <a class="voice-unlock" href="access.html">🔒 Listen with Unfiltered Access</a> <a href="https://venmo.com/u/kinkykorean" target="_blank" rel="noopener noreferrer">Venmo</a> · <a href="https://cash.app/$Kinkykorean" target="_blank" rel="noopener noreferrer">Cash App</a></div>
-      <p>THE KINKY KOREAN · Private. Personal. Unfiltered. · <a href="disclaimer.html">18+ / Disclaimer / Terms / Privacy</a></p>
-    </footer>
   </section>
-
-  <div id="checkin-modal" class="modal">
-    <div class="modal-box">
-      <button class="close" onclick="this.closest('.modal').classList.remove('show')">×</button>
-      <div class="section-tag">🖤 THE KK CHECK-IN</div>
-      <h2>Okay… tell me.</h2>
-      <form onsubmit="submitCheckin(event)">
-        <label>Are you enjoying this, Kinky Korean?
-          <select><option>I'm obsessed</option><option>I'm really enjoying it</option><option>I need more KK 😏</option><option>I have thoughts…</option></select>
-        </label>
-        <label>Would you want a Kinky Korean in your life?
-          <select><option>Absolutely</option><option>Probably more than I should</option><option>Depends what kind 😏</option><option>I'm still figuring that out</option></select>
-        </label>
-        <label>How much does this Kinky Korean turn you on? <span class="range-value" id="rangeValue">5</span>/10
-          <input type="range" min="0" max="10" value="5" oninput="document.getElementById('rangeValue').textContent=this.value">
-        </label>
-        <label>What do you wish you could see or hear more of?
-          <textarea placeholder="Tell KK…"></textarea>
-        </label>
-        <label>If you could ask KK one thing, what would it be?
-          <textarea placeholder="I'm listening…"></textarea>
-        </label>
-        <button class="dark-btn" type="submit">Send to KK 💋</button>
-      </form>
-    </div>
-  </div>
-
   <script src="script.js"></script>
 </body>
 </html>
