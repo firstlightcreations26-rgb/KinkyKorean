@@ -266,3 +266,14 @@ footer{padding:25px 20px 45px;text-align:center;color:#9f9198;font-size:12px}.ti
 
 /* Cute footer shortcut back to diary categories */
 .all-categories-link{position:relative;z-index:10;text-align:center;margin:16px 0 0;font-family:"Caveat",cursive;font-size:16px;letter-spacing:.4px}.all-categories-link a{display:inline-block;color:#a94a70;text-decoration:none;padding:5px 12px;border:1px dashed #d99ab2;border-radius:999px;background:#fff3f8cc;transform:rotate(-1deg)}.all-categories-link a:hover{background:#ffdce9;transform:rotate(0deg) translateY(-1px)}
+
+
+/* Quick category chooser opened by the tiny footer shortcut */
+.quick-categories{max-width:760px;margin:18px auto 6px;padding:0 18px;scroll-margin-top:90px}
+.quick-categories-card{background:#fff4f8;border:2px dashed #d99ab2;border-radius:20px;padding:15px 16px 17px;box-shadow:5px 7px 0 #e7aec3;transform:rotate(-.2deg)}
+.quick-categories-kicker{text-align:center;font-family:"Caveat",cursive;font-size:19px;color:#a94a70;margin-bottom:10px}
+.quick-category-links{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.quick-category-links a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-height:66px;padding:7px 5px;background:#fff;border:1px solid #efc6d6;border-radius:13px;text-decoration:none;font-size:20px;box-shadow:2px 3px 0 #f1c8d7}
+.quick-category-links a span{font-family:"Caveat",cursive;font-size:17px;font-weight:700;color:#9d3f65;line-height:1}
+.quick-category-links a:hover{transform:translateY(-1px);background:#ffe8f1}
+@media(max-width:650px){.quick-category-links{grid-template-columns:repeat(2,1fr)}.quick-categories{padding:0 12px}.quick-category-links a{min-height:58px}}
