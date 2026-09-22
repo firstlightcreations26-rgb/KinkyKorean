@@ -43,7 +43,7 @@ input,select{width:100%;border:0;border-bottom:2px solid #c88ba3;background:tran
 </style></head>
 <body>
 <div class="desk"><main class="notebook">
-  <div class="kk-back-wrap"><button class="kk-back-btn" onclick="if(history.length>1){history.back()}else{location.href='index.html'}">← Back</button></div>
+  
 <section class="page left">
 <div class="tape"></div><div class="kiss">💋</div>
 <div class="script secret">you found my diary…</div>
@@ -135,7 +135,7 @@ Unfiltered Access: <b>“Unfiltered Access”</b></p>
 <a href="disclaimer.html">18+ • Disclaimer • Terms • Privacy</a> · <a href="mailto:info@kinkykorean.blog">info@kinkykorean.blog</a>
 <p>© 2026 The Kinky Korean</p></div>
 </section>
-</main></div>
+</main><nav style="max-width:1050px;margin:18px auto;display:flex;justify-content:space-between;font-family:'Bradley Hand','Segoe Print',cursive;font-size:20px"><a href="entry-001.html">← Flip Back</a><a href="entry.002.html">Turn Page →</a></nav></div>
 <script>
 function pick(value,id){
   document.getElementById('plan').value=value;
@@ -147,6 +147,7 @@ function pick(value,id){
   if(value.startsWith('Unfiltered Access')) memo.placeholder='Unfiltered Access';
   document.getElementById('request').scrollIntoView({behavior:'smooth'})
 }
+const q=new URLSearchParams(location.search);if(q.get('entry')){document.getElementById('entry').value='Entry #'+q.get('entry')}if(q.get('plan')==='unfiltered'){pick('Unfiltered Access — $44','unfiltered')}if(q.get('plan')==='single'){pick('Single Entry — $8','single')}
 document.getElementById('accessForm').addEventListener('submit',function(e){
   e.preventDefault();
   const d={
