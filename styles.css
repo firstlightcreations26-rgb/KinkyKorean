@@ -296,3 +296,9 @@ footer{padding:25px 20px 45px;text-align:center;color:#9f9198;font-size:12px}.ti
 .kk-tip-links{display:flex;gap:7px;margin-top:8px;flex-wrap:wrap}
 .kk-tip-links a{font-family:"DM Sans",sans-serif;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.4px;text-decoration:none;color:#fff;background:#b84f78;border-radius:999px;padding:6px 9px;box-shadow:2px 3px 0 #e8b7ca}
 @media(max-width:650px){.kk-tip-wrap{gap:12px;margin-top:22px}.kk-tip-jar{width:78px;height:90px;flex-basis:78px;transform:rotate(-14deg) scale(.9)}.kk-tip-copy strong{font-size:22px}.kk-tip-copy span{font-size:17px}}
+
+/* Tip jar pink glass visibility */
+.kk-tip-jar{filter:drop-shadow(4px 7px 7px #7b365866)}
+.kk-tip-jar .jar-rim{border-color:#d9578b;background:linear-gradient(180deg,#ffc6dc,#ef8fb5)}
+.kk-tip-jar .jar-glass{border-color:#d9578b;background:linear-gradient(135deg,#ffd4e4 0 24%,#f5a9c6 45%,#e982aa 100%);box-shadow:inset 8px 0 14px #fff7,inset -7px 0 12px #bd4d7860,0 3px 0 #c34c7960}
+.kk-tip-jar .jar-glass:after{background:#fff9}
