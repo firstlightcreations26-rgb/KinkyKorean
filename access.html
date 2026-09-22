@@ -137,17 +137,38 @@ Unfiltered Access: <b>“Unfiltered Access”</b></p>
 </section>
 </main><nav style="max-width:1050px;margin:18px auto;display:flex;justify-content:space-between;font-family:'Bradley Hand','Segoe Print',cursive;font-size:20px"><a href="entry-001.html">← Flip Back</a><a href="entry.002.html">Turn Page →</a></nav></div>
 <script>
-function pick(value,id){
-  document.getElementById('plan').value=value;
+function pick(value,id,scroll=true){
+  const plan=document.getElementById('plan'), entry=document.getElementById('entry'), memo=document.getElementById('memo'), amount=document.getElementById('amount');
+  plan.value=value;
   document.querySelectorAll('.note').forEach(x=>x.classList.remove('selected'));
   document.getElementById(id).classList.add('selected');
-  const memo=document.getElementById('memo');
-  if(value.startsWith('Single Entry')) memo.placeholder='Entry #___';
-  if(value.startsWith('Daily Access')) memo.placeholder='Daily Access';
-  if(value.startsWith('Unfiltered Access')) memo.placeholder='Unfiltered Access';
-  document.getElementById('request').scrollIntoView({behavior:'smooth'})
+  if(value.startsWith('Single Entry')){
+    memo.placeholder='Entry #___';
+    if(entry.value) memo.value=entry.value;
+    amount.value='8';
+    entry.disabled=false;
+  }
+  if(value.startsWith('Daily Access')){
+    memo.value='Daily Access'; memo.placeholder='Daily Access'; amount.value='28'; entry.value=''; entry.disabled=true;
+  }
+  if(value.startsWith('Unfiltered Access')){
+    memo.value='Unfiltered Access'; memo.placeholder='Unfiltered Access'; amount.value='44'; entry.value=''; entry.disabled=true;
+  }
+  if(scroll) document.getElementById('request').scrollIntoView({behavior:'smooth'})
 }
-const q=new URLSearchParams(location.search);if(q.get('entry')){document.getElementById('entry').value='Entry #'+q.get('entry')}if(q.get('plan')==='unfiltered'){pick('Unfiltered Access — $44','unfiltered')}if(q.get('plan')==='single'){pick('Single Entry — $8','single')}
+const q=new URLSearchParams(location.search);
+if(q.get('entry')) document.getElementById('entry').value='Entry #'+q.get('entry');
+if(q.get('plan')==='unfiltered') pick('Unfiltered Access — $44','unfiltered',false);
+if(q.get('plan')==='daily') pick('Daily Access — $28','daily',false);
+if(q.get('plan')==='single') pick('Single Entry — $8','single',false);
+document.getElementById('plan').addEventListener('change',function(){
+  if(this.value.startsWith('Single')) pick(this.value,'single',false);
+  if(this.value.startsWith('Daily')) pick(this.value,'daily',false);
+  if(this.value.startsWith('Unfiltered')) pick(this.value,'unfiltered',false);
+});
+document.getElementById('entry').addEventListener('input',function(){
+  if(document.getElementById('plan').value.startsWith('Single')) document.getElementById('memo').value=this.value;
+});
 document.getElementById('accessForm').addEventListener('submit',function(e){
   e.preventDefault();
   const d={
