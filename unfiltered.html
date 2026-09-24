@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Unfiltered | The Kinky Korean</title>
+<style>
+body{margin:0;background:#efb6cc;color:#291720;font-family:Georgia,serif;min-height:100vh}.wrap{max-width:760px;margin:auto;padding:25px}.paper{background:#fffaf5;padding:28px 24px;min-height:80vh;box-shadow:0 18px 45px #6d354d44;background-image:repeating-linear-gradient(transparent 0,transparent 31px,#edcfda 32px,transparent 33px)}h1,h2{font-family:"Bradley Hand","Segoe Print",cursive;color:#b82f6a}h1{font-size:2.7rem}.box{background:#fff;border:1px solid #d7aabd;padding:18px;margin:20px 0;box-shadow:3px 5px 10px #3d1e2b18}.locked{text-align:center;padding:50px 20px}.hidden{display:none}a{color:#a62f64;font-weight:bold}button{border:0;background:#b82f6a;color:#fff;padding:11px 15px;font-weight:bold}.small{font-size:.88rem}</style></head>
+<body><main class="wrap"><section class="paper">
+<div id="checking" class="locked"><h2>Checking your diary key… 🔒</h2></div>
+<div id="denied" class="locked hidden"><h1>KK locked this page. 🔒💋</h1><p>Your Unfiltered access is missing or expired.</p><p><a href="member-login.html">Use your private login →</a></p></div>
+<div id="inside" class="hidden">
+<p>💗 you found my private diary…</p><h1>UNFILTERED 🖤</h1><p id="expiry" class="small"></p>
+<div class="box"><h2>📖 Full Diary</h2><p>The pages I don't leave sitting out in public.</p><p><strong>Private entries will live here.</strong></p></div>
+<div class="box"><h2>🎧 KK Voice</h2><p>My five full voice entries + private bonus clips.</p><p><strong>Protected Bunny audio gets connected here next.</strong></p></div>
+<div class="box"><h2>💋 “Tasteful” Pix</h2><p>The private extras that stay behind the locked diary.</p><p><strong>Protected Bunny photos get connected here next.</strong></p></div>
+<p style="text-align:center"><button id="logout">Lock My Diary 🔒</button></p>
+</div></section></main>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script>
+const client=supabase.createClient('https://zeeghkticnftmzslbzrc.supabase.co','sb_publishable_c1bDYHzjRzuVrW9DePRo2A_Tn4i5lOO');
+const checking=document.getElementById('checking'),denied=document.getElementById('denied'),inside=document.getElementById('inside');
+async function gate(){
+ const {data:{session}}=await client.auth.getSession();
+ if(!session){checking.classList.add('hidden');denied.classList.remove('hidden');return}
+ const {data}=await client.from('member_access').select('expires_at').eq('user_id',session.user.id).eq('access_level','unfiltered').eq('active',true).gt('expires_at',new Date().toISOString()).order('expires_at',{ascending:false}).limit(1);
+ checking.classList.add('hidden');
+ if(!data||!data.length){denied.classList.remove('hidden');return}
+ inside.classList.remove('hidden');document.getElementById('expiry').textContent='Access expires: '+new Date(data[0].expires_at).toLocaleDateString();
+}
+document.getElementById('logout').onclick=async()=>{await client.auth.signOut();location.href='member-login.html'};gate();
+</script></body></html>
