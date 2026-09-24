@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Private Access | The Kinky Korean</title>
+<style>
+body{margin:0;min-height:100vh;background:#f4bfd3;color:#2a1721;font-family:Georgia,serif;display:grid;place-items:center;padding:22px}
+.card{width:min(520px,100%);background:#fffaf5;padding:34px 26px;border-radius:12px;box-shadow:0 18px 45px #7d456044;text-align:center}
+h1{color:#bd3c73;font-family:"Bradley Hand","Segoe Print",cursive;font-size:2.5rem;margin:.2em 0}
+input,button{width:100%;padding:13px;margin-top:12px;font:inherit;box-sizing:border-box}
+input{border:1px solid #d6a9b9;background:white}
+button{border:0;background:#bd3c73;color:white;font-weight:bold;cursor:pointer}
+.small{font-size:.9rem;line-height:1.5}.status{margin-top:15px;font-weight:bold}.hidden{display:none}
+a{color:#a62f64}
+</style>
+</head><body>
+<main class="card">
+<div>🔒 💋 🔒</div>
+<h1>KK's Private Pages</h1>
+<p>Enter the email connected to your approved access. I'll send you a private sign-in link.</p>
+<form id="loginForm">
+<input id="email" type="email" required autocomplete="email" placeholder="your email">
+<button type="submit">Send My Private Link 💌</button>
+</form>
+<p id="status" class="status"></p>
+<div id="member" class="hidden">
+<h2>Welcome back, Big Nuts. 💋</h2>
+<p id="accessText"></p>
+<p><a href="unfiltered.html">Open the private diary →</a></p>
+<button id="logout" type="button">Lock My Diary</button>
+</div>
+<p class="small">Access only works for approved, unexpired memberships. Need help? <a href="mailto:info@kinkykorean.blog">info@kinkykorean.blog</a></p>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+const client=supabase.createClient('https://zeeghkticnftmzslbzrc.supabase.co','sb_publishable_c1bDYHzjRzuVrW9DePRo2A_Tn4i5lOO');
+const form=document.getElementById('loginForm'),statusEl=document.getElementById('status'),member=document.getElementById('member');
+async function checkAccess(){
+ const {data:{session}}=await client.auth.getSession();
+ if(!session)return;
+ const {data,error}=await client.from('member_access').select('access_level,entry_slug,starts_at,expires_at,active').eq('user_id',session.user.id).eq('active',true).gt('expires_at',new Date().toISOString()).order('expires_at',{ascending:false}).limit(1);
+ if(error||!data||!data.length){statusEl.textContent='This diary key is locked or expired. 🔒';return}
+ form.classList.add('hidden');member.classList.remove('hidden');
+ const a=data[0], exp=new Date(a.expires_at);
+ statusEl.textContent='';
+ document.getElementById('accessText').textContent='Your '+a.access_level.replace('_',' ')+' access is active through '+exp.toLocaleDateString()+'.';
+}
+form.addEventListener('submit',async e=>{
+ e.preventDefault(); statusEl.textContent='Sending your private link…';
+ const email=document.getElementById('email').value.trim();
+ const {error}=await client.auth.signInWithOtp({email,options:{shouldCreateUser:false,emailRedirectTo:location.origin+location.pathname}});
+ statusEl.textContent=error?'That email does not have an approved KK login yet.':'Check your email for your private sign-in link. 💌';
+});
+document.getElementById('logout').addEventListener('click',async()=>{await client.auth.signOut();location.reload()});
+client.auth.onAuthStateChange(()=>setTimeout(checkAccess,0));checkAccess();
+</script>
+</body></html>
