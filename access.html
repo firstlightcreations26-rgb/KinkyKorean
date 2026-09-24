@@ -40,7 +40,7 @@ input,select{width:100%;border:0;border-bottom:2px solid #c88ba3;background:tran
 .memo-note strong{color:var(--rose)}
 .help-note{margin-top:22px;padding-top:18px;border-top:1px dashed #d7aabd}
 @media(max-width:820px){.notebook{grid-template-columns:1fr}.notebook:after{display:none}.page{padding:36px 26px}.right{border-top:2px solid #d7aabd}h1{font-size:2.6rem}}
-</style></head>
+</style><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script></head>
 <body>
 <div class="desk"><main class="notebook">
   
@@ -137,6 +137,7 @@ Unfiltered Access: <b>“Unfiltered Access”</b></p>
 </section>
 </main><nav style="max-width:1050px;margin:18px auto;display:flex;justify-content:space-between;font-family:'Bradley Hand','Segoe Print',cursive;font-size:20px"><a href="entry-001.html">← Flip Back</a><a href="entry.002.html">Turn Page →</a></nav></div>
 <script>
+const kkdb=supabase.createClient('https://zeeghkticnftmzslbzrc.supabase.co','sb_publishable_c1bDYHzjRzuVrW9DePRo2A_Tn4i5lOO');
 function pick(value,id,scroll=true){
   const plan=document.getElementById('plan'), entry=document.getElementById('entry'), memo=document.getElementById('memo'), amount=document.getElementById('amount');
   plan.value=value;
@@ -169,7 +170,7 @@ document.getElementById('plan').addEventListener('change',function(){
 document.getElementById('entry').addEventListener('input',function(){
   if(document.getElementById('plan').value.startsWith('Single')) document.getElementById('memo').value=this.value;
 });
-document.getElementById('accessForm').addEventListener('submit',function(e){
+document.getElementById('accessForm').addEventListener('submit',async function(e){
   e.preventDefault();
   const d={
     plan:document.getElementById('plan').value,
@@ -182,6 +183,10 @@ document.getElementById('accessForm').addEventListener('submit',function(e){
     paymentDate:document.getElementById('paymentDate').value,
     memo:document.getElementById('memo').value
   };
+  const submitBtn=this.querySelector('button[type="submit"]');
+  submitBtn.disabled=true; submitBtn.textContent='sealing your request… 💌';
+  const {error}=await kkdb.from('access_requests').insert({plan:d.plan,entry:d.entry||null,display_name:d.name,email:d.email,payment_method:d.method,payment_name:d.paymentName,amount:Number(d.amount),payment_date:d.paymentDate,memo:d.memo});
+  if(error){submitBtn.disabled=false;submitBtn.textContent='seal my request 💌';alert('Your request didn’t save. Please try again, or email info@kinkykorean.blog for help.');return;}
   sessionStorage.setItem('kkAccessRequest',JSON.stringify(d));
   location.href='access-received.html'
 })
