@@ -11,4 +11,14 @@
 <div id="pollResult" class="poll-result"></div></div>
 <div class="scrap-note"><strong>🎀 More extras will appear here over time.</strong><p>Nothing mass-produced. Just little private additions when I feel like sharing them.</p></div>
 <nav class="flip-nav"><a href="voice.html">← Flip Back</a><span>♡ private extras ♡</span><a href="virtual-kk.html">Turn Page →</a></nav><div class="kk-tip-wrap"><div class="kk-tip-jar" aria-hidden="true"><div class="jar-rim"></div><div class="jar-glass"></div><div class="bow"></div><div class="bow-knot"></div></div><div class="kk-tip-copy"><strong>KK Tip Jar ♡</strong><span>don’t be afraid to show her some love</span><div class="kk-tip-links"><a href="https://venmo.com/u/kinkykorean" target="_blank" rel="noopener">Venmo</a><a href="https://cash.app/$Kinkykorean" target="_blank" rel="noopener">Cash App</a></div></div></div><div class="all-categories-link"><span>♡</span> <a href="entry-001.html">Diary</a> · <a href="voice.html">Voice</a> · <a href="private.html">Extras</a> · <a href="virtual-kk.html">Virtual KK</a> · <a href="dear-kk.html">Dear KK</a> · <a href="check-in.html">Check-In</a> <span>♡</span></div></article></main>
-<script>document.getElementById('extrasPoll').addEventListener('submit',function(e){e.preventDefault();const x=document.querySelector('input[name="extra"]:checked');if(!x)return;localStorage.setItem('kkPrivateExtrasPoll',x.value);document.getElementById('pollResult').textContent='Noted 😂 KK knows you picked: '+x.value;});const saved=localStorage.getItem('kkPrivateExtrasPoll');if(saved)document.getElementById('pollResult').textContent='Your vote: '+saved;</script></body></html>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script>
+const kkdb=supabase.createClient('https://zeeghkticnftmzslbzrc.supabase.co','sb_publishable_c1bDYHzjRzuVrW9DePRo2A_Tn4i5lOO');
+const poll=document.getElementById('extrasPoll'),result=document.getElementById('pollResult');
+const saved=localStorage.getItem('kkPrivateExtrasPoll');
+if(saved){result.textContent='Your vote: '+saved;poll.querySelectorAll('input,button').forEach(x=>x.disabled=true)}
+poll.addEventListener('submit',async function(e){e.preventDefault();if(localStorage.getItem('kkPrivateExtrasPoll'))return;
+ const x=document.querySelector('input[name="extra"]:checked');if(!x)return;
+ const {error}=await kkdb.from('extras_poll_votes').insert({choice:x.value});
+ if(error){result.textContent='Vote didn’t save — try again in a second. 💋';return}
+ localStorage.setItem('kkPrivateExtrasPoll',x.value);result.textContent='Noted 😂 KK knows you picked: '+x.value;poll.querySelectorAll('input,button').forEach(el=>el.disabled=true);
+});</script></body></html>
