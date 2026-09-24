@@ -302,3 +302,62 @@ footer{padding:25px 20px 45px;text-align:center;color:#9f9198;font-size:12px}.ti
 .kk-tip-jar .jar-rim{border-color:#d9578b;background:linear-gradient(180deg,#ffc6dc,#ef8fb5)}
 .kk-tip-jar .jar-glass{border-color:#d9578b;background:linear-gradient(135deg,#ffd4e4 0 24%,#f5a9c6 45%,#e982aa 100%);box-shadow:inset 8px 0 14px #fff7,inset -7px 0 12px #bd4d7860,0 3px 0 #c34c7960}
 .kk-tip-jar .jar-glass:after{background:#fff9}
+
+/* Tactile notebook pages throughout the diary */
+.diary-topbar{position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;gap:15px;min-height:78px;padding:10px clamp(18px,5vw,58px);background:#211d20;color:#fff;box-shadow:0 4px 13px #3e1d2c44}
+.diary-brand{display:inline-flex;align-items:baseline;gap:.45em;white-space:nowrap;color:#fff;font:500 clamp(.75rem,2.6vw,1rem)/1 "DM Sans",sans-serif;letter-spacing:.16em}
+.diary-brand em{color:#ee5a92;font:700 clamp(1.75rem,6vw,2.35rem)/.9 "Caveat",cursive;letter-spacing:.035em;font-style:normal}
+.diary-brand:hover em,.diary-brand:focus-visible em{color:#ff9bc2}
+.diary-topbar-note{font:700 1.15rem "Caveat",cursive;color:#ffdce9;white-space:nowrap}
+.diary-topbar-note:hover,.diary-topbar-note:focus-visible{text-decoration:underline}
+.entry-body .entry-wrap{padding:34px clamp(10px,3vw,28px) 100px;background:radial-gradient(circle at 15% 10%,#ffe0e9 0,transparent 45%),linear-gradient(135deg,#edbbcc,#db97b2 70%,#bb6689)}
+.entry-body .paper.entry-page{
+  --paper-margin:82px;
+  position:relative;
+  max-width:790px;
+  min-height:980px;
+  margin:0 auto;
+  padding:58px clamp(29px,6vw,70px) 94px calc(var(--paper-margin) + 23px);
+  border:1px solid #dfcabb;
+  border-radius:12px 17px 23px 11px;
+  background-color:#faf3e8;
+  background-image:
+    linear-gradient(90deg,transparent calc(var(--paper-margin) - 2px),#da8da6a8 calc(var(--paper-margin) - 1px),#da8da6a8 calc(var(--paper-margin) + 1px),transparent calc(var(--paper-margin) + 2px)),
+    repeating-linear-gradient(to bottom,transparent 0,transparent 36px,#81b3c155 37px,transparent 38px),
+    url("notebook-paper.webp");
+  background-size:auto,auto,640px 640px;
+  box-shadow:2px 3px 0 #faf0e1,7px 9px 0 #d9c8b7,13px 22px 43px #63334c77;
+  transform:rotate(-.18deg);
+}
+.entry-body .paper.entry-page::before{
+  content:"";
+  position:absolute;z-index:2;pointer-events:none;
+  top:90px;bottom:95px;left:21px;width:30px;
+  background-image:radial-gradient(circle,#654349 0 8px,#a5847d 9px,#e9d7c5 12px,transparent 14px),radial-gradient(circle,#654349 0 8px,#a5847d 9px,#e9d7c5 12px,transparent 14px),radial-gradient(circle,#654349 0 8px,#a5847d 9px,#e9d7c5 12px,transparent 14px);
+  background-size:30px 30px;background-repeat:no-repeat;background-position:center top,center center,center bottom;
+  filter:drop-shadow(1px 1px 1px #684f4944);
+}
+.entry-body .paper.entry-page::after{
+  content:"";position:absolute;z-index:2;pointer-events:none;
+  right:0;bottom:0;width:56px;height:52px;
+  background:linear-gradient(135deg,#e7d2bd,#fffaf0 52%,#d9c2ad 95%);
+  clip-path:polygon(100% 0,0 100%,100% 100%);
+  filter:drop-shadow(-2px -2px 3px #6c4a3c77);
+}
+.entry-body .entry-page h1{font-size:clamp(2.8rem,6vw,4rem);line-height:1.02;color:#2d2528;margin:9px 0 31px;padding-bottom:10px;border-bottom:3px solid #dc6e9999;text-wrap:balance}
+.entry-body .entry-page .page-label{display:inline-block;color:#ce4e80;font-size:clamp(1.4rem,4vw,1.85rem);font-weight:700;border-bottom:2px solid #d56793;transform:rotate(-2deg)}
+.entry-body .entry-page p{color:#44353c}
+.entry-body .entry-page .flip-nav{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;gap:8px}
+.entry-body .entry-page .flip-nav a:last-child{text-align:right}
+.entry-body .entry-page .flip-nav span{display:inline;color:#a5446d;font-size:1.15rem;white-space:nowrap}
+@media(max-width:650px){
+  .diary-topbar{min-height:65px;padding:8px 14px}
+  .diary-topbar-note{font-size:1rem}
+  .entry-body .entry-wrap{padding:16px 9px 70px}
+  .entry-body .paper.entry-page{--paper-margin:47px;padding:39px 18px 75px calc(var(--paper-margin) + 15px);transform:none;min-height:860px;border-radius:7px 11px 17px 8px}
+  .entry-body .paper.entry-page::before{left:8px;top:85px;bottom:73px;width:23px;background-size:23px 23px}
+  .entry-body .paper.entry-page::after{width:38px;height:37px}
+  .entry-body .entry-page h1{font-size:clamp(2.3rem,9.7vw,3.25rem)}
+  .entry-body .entry-page .flip-nav{font-size:1.05rem;gap:4px}
+  .entry-body .entry-page .flip-nav span{font-size:.93rem}
+}
