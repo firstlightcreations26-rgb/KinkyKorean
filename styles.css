@@ -361,3 +361,15 @@ footer{padding:25px 20px 45px;text-align:center;color:#9f9198;font-size:12px}.ti
   .entry-body .entry-page .flip-nav{font-size:1.05rem;gap:4px}
   .entry-body .entry-page .flip-nav span{font-size:.93rem}
 }
+
+/* Compact navigation at the end of every third diary entry */
+.entry-body .quick-categories{max-width:none;margin:19px 0 0;padding:0}
+.entry-body .quick-categories-card{padding:12px 0 0;background:none;border:0;border-top:1px solid #cfaeb8;border-radius:0;box-shadow:none;transform:none}
+.entry-body .quick-categories-kicker{margin:0 0 8px;text-align:left;color:#7e5868;font:700 .69rem/1.3 "DM Sans",sans-serif;letter-spacing:.13em;text-transform:uppercase}
+.entry-body .quick-category-links{display:flex;flex-wrap:wrap;gap:4px 0;justify-content:flex-start}
+.entry-body .quick-category-links a{display:inline-block;min-height:0;padding:3px 10px;background:none;border:0;border-right:1px solid #d1b4be;border-radius:0;box-shadow:none;transform:none;text-decoration:none}
+.entry-body .quick-category-links a:first-child{padding-left:0}
+.entry-body .quick-category-links a:last-child{border-right:0}
+.entry-body .quick-category-links a span{color:#8a3d61;font:600 .8rem/1.3 "DM Sans",sans-serif}
+.entry-body .quick-category-links a:hover,.entry-body .quick-category-links a:focus-visible{background:none;text-decoration:underline;text-underline-offset:3px}
+@media(max-width:650px){.entry-body .quick-category-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 0}.entry-body .quick-category-links a{padding:3px 7px}.entry-body .quick-category-links a:nth-child(odd){padding-left:0}.entry-body .quick-category-links a:nth-child(even){border-right:0}}
