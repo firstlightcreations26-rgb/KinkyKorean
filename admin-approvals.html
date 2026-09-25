@@ -1,0 +1,111 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>KK Approvals</title><style>
+*{box-sizing:border-box}body{margin:0;background:#e6a8c1;color:#35202b;font:16px/1.5 Arial,sans-serif}.wrap{max-width:850px;margin:18px auto;padding:clamp(18px,5vw,38px);background:#fff9fb;border-radius:12px;box-shadow:0 14px 30px #4e203a40}h1,h2{font-family:Georgia,serif;color:#a5225c}h1{font-size:2rem}input,textarea,select,button{font:inherit}input,textarea,select{width:100%;padding:10px;border:1px solid #c686a5;border-radius:6px;background:#fff}label{display:block;margin:12px 0 5px;font-weight:bold}textarea{min-height:130px}button,.button{background:#ae2e66;color:#fff;border:0;border-radius:6px;padding:11px 15px;cursor:pointer;text-decoration:none;display:inline-block;margin:8px 5px 8px 0}button:disabled{opacity:.5;cursor:wait}.card{border:1px solid #d9a3bb;background:#fff1f7;padding:18px;margin:16px 0;border-radius:9px}.small{font-size:.9rem}.hidden{display:none}.check{display:flex;gap:10px;align-items:flex-start}.check input{width:auto;margin-top:5px}pre{white-space:pre-wrap;overflow-wrap:anywhere}a{color:#a5225c}.error{color:#9b1740;font-weight:bold}
+</style></head><body><main class="wrap"><h1>KK Approvals 💌</h1><p>Verify a Venmo or Cash App payment before you approve any request. Only your account can view and change requests.</p>
+<section id="login"><h2>Sign in</h2><form id="loginForm"><label for="adminEmail">Your email</label><input id="adminEmail" type="email" autocomplete="email" required><button>Send my private sign-in link</button></form><p id="loginStatus"></p></section>
+<section id="admin" class="hidden"><p id="owner"></p><button id="logout" type="button">Sign out</button><h2>Pending access requests</h2><p id="requestStatus"></p><div id="requests"></div>
+<section class="card"><h2>Publish a private diary entry</h2><p class="small">Paste the full entry here. A public teaser does not contain the full paid story. Save it as a draft until you are ready.</p><form id="entryForm">
+<label for="entryNumber">Entry number</label><input id="entryNumber" type="number" min="2" max="999" required>
+<label for="entryTitle">Title</label><input id="entryTitle" maxlength="200" required>
+<label for="entryTier">Who can read it?</label><select id="entryTier"><option value="daily">Daily and Unfiltered</option><option value="unfiltered">Unfiltered only</option></select>
+<label for="entryBody">Full entry text</label><textarea id="entryBody" required maxlength="100000" placeholder="Write paragraphs with a blank line between them."></textarea>
+<label class="check"><input id="entryPublished" type="checkbox"> Publish now so approved readers can see it</label>
+<button type="submit">Save private entry</button><p id="entryStatus"></p></form></section>
+<h2>Current private entries</h2><div id="publishedList"></div>
+<div id="reply" class="card hidden"><h2>Access email to send</h2><p>Copy this message into your email app and send it to the buyer.</p><textarea id="replyText" readonly></textarea><button id="copyReply" type="button">Copy reply</button><a id="openMail" class="button" href="#">Open email app</a></div>
+</section></main><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script>
+const db=supabase.createClient('https://zeeghkticnftmzslbzrc.supabase.co','sb_publishable_c1bDYHzjRzuVrW9DePRo2A_Tn4i5lOO');
+const ownerEmail='kinkykorean26@gmail.com';
+const byId=id=>document.getElementById(id);
+let entries=[];
+async function start(){
+ const {data:{user}}=await db.auth.getUser();
+ if(!user)return;
+ if(user.email?.toLowerCase()!==ownerEmail){byId('loginStatus').textContent='This account cannot manage KK approvals.';return}
+ byId('login').classList.add('hidden');byId('admin').classList.remove('hidden');
+ byId('owner').textContent='Signed in as '+user.email;
+ await refresh();
+}
+async function refresh(){
+ const [{data:requests,error:requestError},{data:pages,error:pageError}]=await Promise.all([
+  db.from('access_requests').select('id,plan,entry,display_name,email,payment_method,payment_name,amount,payment_date,memo,status,created_at').eq('status','pending').order('created_at',{ascending:false}).limit(100),
+  db.from('private_entries').select('entry_number,title,tier,published').order('entry_number')
+ ]);
+ if(requestError){byId('requestStatus').textContent='Could not load requests: '+requestError.message;return}
+ entries=pages||[];
+ byId('requestStatus').textContent=requests?.length?requests.length+' request(s) waiting.':'No requests waiting.';
+ const target=byId('requests');target.replaceChildren();
+ for(const r of requests||[])target.append(makeRequest(r));
+ const list=byId('publishedList');list.replaceChildren();
+ if(pageError){list.textContent='Could not load entries: '+pageError.message;return}
+ if(!entries.length)list.textContent='No full private entries yet. Publish one above before approving paid diary access.';
+ for(const p of entries){
+  const row=document.createElement('p');row.textContent='Entry #'+String(p.entry_number).padStart(3,'0')+' · '+p.title+' · '+p.tier+' · '+(p.published?'PUBLISHED':'draft');
+  list.append(row);
+ }
+}
+function makeRequest(r){
+ const card=document.createElement('section');card.className='card';
+ const h=document.createElement('h3');h.textContent=r.display_name+' — '+r.plan;card.append(h);
+ for(const [label,value] of [['Email',r.email],['Paid with',r.payment_method],['Payment name',r.payment_name],['Amount','$'+r.amount],['Payment date',r.payment_date],['Memo',r.memo],['Entry',r.entry||'—']]){
+   const p=document.createElement('p');p.textContent=label+': '+value;card.append(p);
+ }
+ let entryInput;
+ if(r.plan.startsWith('Single')){
+  const label=document.createElement('label');label.textContent='Entry number to unlock';
+  entryInput=document.createElement('input');entryInput.type='number';entryInput.min='2';entryInput.max='999';
+  const match=String(r.entry||'').match(/\b\d{1,3}\b/);
+  if(match)entryInput.value=Number(match[0]);
+  card.append(label,entryInput);
+ }
+ const box=document.createElement('label');box.className='check';
+ const checked=document.createElement('input');checked.type='checkbox';
+ box.append(checked,document.createTextNode('I checked the actual payment in Venmo or Cash App.'));
+ card.append(box);
+ const button=document.createElement('button');button.type='button';button.textContent='Approve and prepare reply';
+ const result=document.createElement('p');result.className='small';
+ card.append(button,result);
+ button.onclick=async()=>{
+  if(!checked.checked){result.textContent='Check the payment first.';return}
+  let level=r.plan.startsWith('Single')?'single_entry':r.plan.startsWith('Unfiltered')?'unfiltered':'daily';
+  let entry=level==='single_entry'?Number(entryInput.value):null;
+  if(level==='single_entry'&&(!Number.isInteger(entry)||entry<2||entry>999)){result.textContent='Enter a valid entry number.';return}
+  const available=entries.some(p=>p.published&&(level==='single_entry'?p.entry_number===entry:level==='daily'?p.tier==='daily':p.tier==='unfiltered'));
+  if(!available){result.textContent='Publish the purchased private content before approving this request.';return}
+  button.disabled=true;result.textContent='Approving…';
+  const now=new Date(),expiry=level==='single_entry'?new Date('2099-12-31T23:59:59Z'):new Date(now.getTime()+30*24*60*60*1000);
+  const grant={request_id:r.id,user_id:null,email:r.email.trim().toLowerCase(),access_level:level,entry_slug:entry?String(entry).padStart(3,'0'):null,starts_at:now.toISOString(),expires_at:expiry.toISOString(),active:true};
+  const {error}=await db.from('member_access').insert(grant);
+  if(error){result.textContent='Could not approve: '+error.message;button.disabled=false;return}
+  const {error:statusError}=await db.from('access_requests').update({status:'approved'}).eq('id',r.id);
+  if(statusError){result.textContent='Access was created, but the request status did not update. Do not approve it twice. '+statusError.message;return}
+  result.textContent='Approved. Copy and send the access reply below.';
+  showReply(r,grant,expiry);
+  await refresh();
+ };
+ return card;
+}
+function showReply(r,grant,expiry){
+ const tier=grant.access_level==='single_entry'?'Entry #'+grant.entry_slug:grant.access_level==='unfiltered'?'Unfiltered Access':'Daily Access';
+ const subject='Your Kinky Korean '+tier+' is ready 💌';
+ const body='Hey '+r.display_name+',\n\nI matched your payment. Your '+tier+' is ready.\n\nOpen your private diary: https://kinkykorean.blog/member-login.html\nUse this email: '+grant.email+'\nYour access runs through: '+expiry.toLocaleDateString()+'\n\nTap “Send My Private Link” on that page, then check your email for your one-time sign-in link. If something stays locked, reply and tell me which page you tried.\n\n— KK 💋';
+ byId('replyText').value='Subject: '+subject+'\nTo: '+grant.email+'\n\n'+body;
+ byId('openMail').href='mailto:'+encodeURIComponent(grant.email)+'?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);
+ byId('reply').classList.remove('hidden');byId('reply').scrollIntoView({behavior:'smooth'});
+}
+byId('loginForm').onsubmit=async e=>{
+ e.preventDefault();byId('loginStatus').textContent='Sending your sign-in link…';
+ const {error}=await db.auth.signInWithOtp({email:byId('adminEmail').value.trim(),options:{shouldCreateUser:true,emailRedirectTo:location.origin+'/admin-approvals.html'}});
+ byId('loginStatus').textContent=error?'Could not send the link. Try again.':'Check your email for your private sign-in link.';
+};
+byId('entryForm').onsubmit=async e=>{
+ e.preventDefault();
+ const number=Number(byId('entryNumber').value),title=byId('entryTitle').value.trim(),body=byId('entryBody').value.trim(),tier=byId('entryTier').value,published=byId('entryPublished').checked;
+ if(!Number.isInteger(number)||number<2||number>999||!title||!body){byId('entryStatus').textContent='Fill in the entry number, title, and full text.';return}
+ const {error}=await db.from('private_entries').upsert({entry_number:number,title,body_text:body,tier,published,updated_at:new Date().toISOString()},{onConflict:'entry_number'});
+ byId('entryStatus').textContent=error?'Could not save: '+error.message:'Saved '+(published?'and published':'as a draft')+'.';
+ if(!error)await refresh();
+};
+byId('copyReply').onclick=async()=>{await navigator.clipboard.writeText(byId('replyText').value);byId('copyReply').textContent='Copied ✓'};
+byId('logout').onclick=async()=>{await db.auth.signOut();location.reload()};
+db.auth.onAuthStateChange(()=>setTimeout(start,0));start();
+</script></body></html>
