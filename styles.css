@@ -390,3 +390,8 @@ footer{padding:25px 20px 45px;text-align:center;color:#9f9198;font-size:12px}.ti
 .diary-page-select{margin-left:auto;max-width:42vw;min-height:44px;padding:7px 28px 7px 12px;border:1px solid #ffdce999;border-radius:8px;background:#48303d;color:#fff;font:700 1.15rem "Caveat",cursive;cursor:pointer;appearance:auto;-webkit-appearance:menulist}
 .diary-page-select:focus-visible{outline:3px solid #ffaecf;outline-offset:2px}
 .diary-page-select option{font:16px "DM Sans",sans-serif;color:#211d20;background:#fff8fb}
+
+/* Compact diary selector */
+.diary-page-select{width:112px;max-width:112px;min-height:38px;padding:3px 4px 3px 6px;border-radius:6px;font-size:.96rem;text-overflow:ellipsis}
+.diary-page-select option{font-size:14px}
+@media(max-width:390px){.diary-page-select{width:98px;max-width:98px;font-size:.9rem}}
