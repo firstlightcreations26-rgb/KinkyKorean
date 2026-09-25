@@ -78,8 +78,12 @@ function makeRequest(r){
   if(error){result.textContent='Could not approve: '+error.message;button.disabled=false;return}
   const {error:statusError}=await db.from('access_requests').update({status:'approved'}).eq('id',r.id);
   if(statusError){result.textContent='Access was created, but the request status did not update. Do not approve it twice. '+statusError.message;return}
-  result.textContent='Approved. Copy and send the access reply below.';
   showReply(r,grant,expiry);
+  result.textContent='Approved. Sending the access email…';
+  const {data:mailResult,error:mailError}=await db.functions.invoke('send-member-access',{body:{request_id:r.id}});
+  result.textContent=!mailError&&mailResult?.sent
+   ? 'Approved. The access email was sent automatically to '+grant.email+'.'
+   : 'Approved, but I could not confirm the email was sent. Copy the reply below and send it yourself.';
   await refresh();
  };
  return card;
