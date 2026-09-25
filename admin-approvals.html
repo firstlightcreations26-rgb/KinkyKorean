@@ -68,8 +68,8 @@ function makeRequest(r){
   if(!checked.checked){result.textContent='Check the payment first.';return}
   let level=r.plan.startsWith('Single')?'single_entry':r.plan.startsWith('Unfiltered')?'unfiltered':'daily';
   let entry=level==='single_entry'?Number(entryInput.value):null;
-  if(level==='single_entry'&&(!Number.isInteger(entry)||entry<2||entry>999)){result.textContent='Enter a valid entry number.';return}
-  const available=entries.some(p=>p.published&&(level==='single_entry'?p.entry_number===entry:level==='daily'?p.tier==='daily':p.tier==='unfiltered'));
+  if(level==='single_entry'&&(!Number.isInteger(entry)||entry<2||entry>999||entry===2)){result.textContent='Enter an eligible entry number. Entry #002 is Unfiltered only.';return}
+  const available=entries.some(p=>p.published&&(level==='single_entry'?p.entry_number===entry&&p.tier==='daily':level==='daily'?p.tier==='daily':p.tier==='unfiltered'));
   if(!available){result.textContent='Publish the purchased private content before approving this request.';return}
   button.disabled=true;result.textContent='Approving…';
   const now=new Date(),expiry=level==='single_entry'?new Date('2099-12-31T23:59:59Z'):new Date(now.getTime()+30*24*60*60*1000);
