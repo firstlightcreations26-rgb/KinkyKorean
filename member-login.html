@@ -17,7 +17,7 @@ a{color:#a62f64}
 <main class="card">
 <div>🔒 💋 🔒</div>
 <h1>KK's Private Pages</h1>
-<p>Enter the email connected to your approved access. I'll send you a private sign-in link.</p>
+<p>Enter the email connected to your approved access. We'll send you a private sign-in link.</p>
 <form id="loginForm">
 <input id="email" type="email" required autocomplete="email" placeholder="your email">
 <button type="submit">Send My Private Link 💌</button>
@@ -26,7 +26,7 @@ a{color:#a62f64}
 <div id="member" class="hidden">
 <h2>Welcome back, Big Nuts. 💋</h2>
 <p id="accessText"></p>
-<p><a href="unfiltered.html">Open the private diary →</a></p>
+<div id="accessLinks"></div>
 <button id="logout" type="button">Lock My Diary</button>
 </div>
 <p class="small">Access only works for approved, unexpired memberships. Need help? <a href="mailto:info@kinkykorean.blog">info@kinkykorean.blog</a></p>
@@ -38,18 +38,38 @@ const form=document.getElementById('loginForm'),statusEl=document.getElementById
 async function checkAccess(){
  const {data:{session}}=await client.auth.getSession();
  if(!session)return;
- const {data,error}=await client.from('member_access').select('access_level,entry_slug,starts_at,expires_at,active').eq('user_id',session.user.id).eq('active',true).gt('expires_at',new Date().toISOString()).order('expires_at',{ascending:false}).limit(1);
- if(error||!data||!data.length){statusEl.textContent='This diary key is locked or expired. 🔒';return}
- form.classList.add('hidden');member.classList.remove('hidden');
- const a=data[0], exp=new Date(a.expires_at);
- statusEl.textContent='';
- document.getElementById('accessText').textContent='Your '+a.access_level.replace('_',' ')+' access is active through '+exp.toLocaleDateString()+'.';
+ const now=new Date().toISOString();
+ const {data,error}=await client.from('member_access')
+   .select('access_level,entry_slug,starts_at,expires_at,active')
+   .eq('email',session.user.email.toLowerCase()).eq('active',true)
+   .lte('starts_at',now).gt('expires_at',now)
+   .order('expires_at',{ascending:false});
+ if(error){statusEl.textContent='Could not check your access. Please try again.';return}
+ if(!data?.length){statusEl.textContent='This diary key is locked or expired. If you paid, reply to your confirmation email. 🔒';return}
+ form.classList.add('hidden');member.classList.remove('hidden');statusEl.textContent='';
+ const links=document.getElementById('accessLinks');links.replaceChildren();
+ document.getElementById('accessText').textContent='You have '+data.length+' active diary key'+(data.length===1?'':'s')+'.';
+ for(const grant of data){
+   const p=document.createElement('p'),a=document.createElement('a');
+   if(grant.access_level==='single_entry'){
+     a.href='private-entry.html?entry='+encodeURIComponent(grant.entry_slug);
+     a.textContent='Open Entry #'+grant.entry_slug+' →';
+   } else {
+     a.href='private-diary.html';
+     a.textContent='Open '+(grant.access_level==='unfiltered'?'Unfiltered':'Daily')+' diary →';
+   }
+   p.append(a,document.createTextNode(' · through '+new Date(grant.expires_at).toLocaleDateString()));
+   links.append(p);
+ }
 }
 form.addEventListener('submit',async e=>{
- e.preventDefault(); statusEl.textContent='Sending your private link…';
+ e.preventDefault();statusEl.textContent='Sending your private link…';
  const email=document.getElementById('email').value.trim();
- const {error}=await client.auth.signInWithOtp({email,options:{shouldCreateUser:false,emailRedirectTo:location.origin+location.pathname}});
- statusEl.textContent=error?'That email does not have an approved KK login yet.':'Check your email for your private sign-in link. 💌';
+ const {error}=await client.auth.signInWithOtp({
+   email,
+   options:{shouldCreateUser:true,emailRedirectTo:location.origin+'/member-login.html'}
+ });
+ statusEl.textContent=error?'Could not send the link. Please try again or contact KK.':'Check your email for your private sign-in link. 💌';
 });
 document.getElementById('logout').addEventListener('click',async()=>{await client.auth.signOut();location.reload()});
 client.auth.onAuthStateChange(()=>setTimeout(checkAccess,0));checkAccess();
