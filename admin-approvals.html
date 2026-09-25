@@ -11,7 +11,7 @@
 <label class="check"><input id="entryPublished" type="checkbox"> Publish now so approved readers can see it</label>
 <button type="submit">Save private entry</button><p id="entryStatus"></p></form></section>
 <h2>Current private entries</h2><div id="publishedList"></div>
-<div id="reply" class="card hidden"><h2>Access email to send</h2><p>Copy this message into your email app and send it to the buyer.</p><textarea id="replyText" readonly></textarea><button id="copyReply" type="button">Copy reply</button><a id="openMail" class="button" href="#">Open email app</a></div>
+<div id="reply" class="card hidden"><h2>Access email to send</h2><p id="deliveryStatus" role="status">Sending the access email…</p><textarea id="replyText" readonly></textarea><button id="copyReply" type="button">Copy reply</button><a id="openMail" class="button" href="#">Open email app</a></div>
 </section></main><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script>
 const db=supabase.createClient('https://zeeghkticnftmzslbzrc.supabase.co','sb_publishable_c1bDYHzjRzuVrW9DePRo2A_Tn4i5lOO');
 const ownerEmail='kinkykorean26@gmail.com';
@@ -81,9 +81,11 @@ function makeRequest(r){
   showReply(r,grant,expiry);
   result.textContent='Approved. Sending the access email…';
   const {data:mailResult,error:mailError}=await db.functions.invoke('send-member-access',{body:{request_id:r.id}});
-  result.textContent=!mailError&&mailResult?.sent
-   ? 'Approved. The access email was sent automatically to '+grant.email+'.'
-   : 'Approved, but I could not confirm the email was sent. Copy the reply below and send it yourself.';
+  const emailSent=!mailError&&mailResult?.sent;
+  result.textContent=emailSent?'Approved. Access email sent.':'Approved. Please send the access reply manually.';
+  byId('deliveryStatus').textContent=emailSent
+   ? 'Sent automatically to '+grant.email+'. This copy is for your records; do not send it twice.'
+   : 'I could not confirm delivery. Copy this reply and send it to the buyer yourself.';
   await refresh();
  };
  return card;
