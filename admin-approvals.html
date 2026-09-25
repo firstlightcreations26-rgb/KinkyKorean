@@ -1,7 +1,7 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>KK Approvals</title><style>
 *{box-sizing:border-box}body{margin:0;background:#e6a8c1;color:#35202b;font:16px/1.5 Arial,sans-serif}.wrap{max-width:850px;margin:18px auto;padding:clamp(18px,5vw,38px);background:#fff9fb;border-radius:12px;box-shadow:0 14px 30px #4e203a40}h1,h2{font-family:Georgia,serif;color:#a5225c}h1{font-size:2rem}input,textarea,select,button{font:inherit}input,textarea,select{width:100%;padding:10px;border:1px solid #c686a5;border-radius:6px;background:#fff}label{display:block;margin:12px 0 5px;font-weight:bold}textarea{min-height:130px}button,.button{background:#ae2e66;color:#fff;border:0;border-radius:6px;padding:11px 15px;cursor:pointer;text-decoration:none;display:inline-block;margin:8px 5px 8px 0}button:disabled{opacity:.5;cursor:wait}.card{border:1px solid #d9a3bb;background:#fff1f7;padding:18px;margin:16px 0;border-radius:9px}.small{font-size:.9rem}.hidden{display:none}.check{display:flex;gap:10px;align-items:flex-start}.check input{width:auto;margin-top:5px}pre{white-space:pre-wrap;overflow-wrap:anywhere}a{color:#a5225c}.error{color:#9b1740;font-weight:bold}
 </style></head><body><main class="wrap"><h1>KK Approvals 💌</h1><p>Verify a Venmo or Cash App payment before you approve any request. Only your account can view and change requests.</p>
-<section id="login"><h2>Sign in</h2><form id="loginForm"><label for="adminEmail">Your email</label><input id="adminEmail" type="email" autocomplete="email" required><button>Send my private sign-in link</button></form><p id="loginStatus"></p></section>
+<section id="login"><h2>Sign in</h2><form id="loginForm"><label for="adminEmail">Your email</label><input id="adminEmail" type="email" autocomplete="email" value="kinkykorean26@gmail.com" readonly required><button>Send my private sign-in link</button></form><p id="loginStatus"></p></section>
 <section id="admin" class="hidden"><p id="owner"></p><button id="logout" type="button">Sign out</button><h2>Pending access requests</h2><p id="requestStatus"></p><div id="requests"></div>
 <section class="card"><h2>Publish a private diary entry</h2><p class="small">Paste the full entry here. A public teaser does not contain the full paid story. Save it as a draft until you are ready.</p><form id="entryForm">
 <label for="entryNumber">Entry number</label><input id="entryNumber" type="number" min="2" max="999" required>
@@ -99,9 +99,14 @@ function showReply(r,grant,expiry){
  byId('reply').classList.remove('hidden');byId('reply').scrollIntoView({behavior:'smooth'});
 }
 byId('loginForm').onsubmit=async e=>{
- e.preventDefault();byId('loginStatus').textContent='Sending your sign-in link…';
- const {error}=await db.auth.signInWithOtp({email:byId('adminEmail').value.trim(),options:{shouldCreateUser:true,emailRedirectTo:location.origin+'/admin-approvals.html'}});
- byId('loginStatus').textContent=error?'Could not send the link. Try again.':'Check your email for your private sign-in link.';
+ e.preventDefault();
+ const button=byId('loginForm').querySelector('button');button.disabled=true;
+ byId('loginStatus').textContent='Sending your sign-in link…';
+ const {error}=await db.auth.signInWithOtp({email:ownerEmail,options:{shouldCreateUser:true,emailRedirectTo:location.origin+'/admin-approvals.html'}});
+ byId('loginStatus').textContent=error?.status===429
+   ? 'Supabase has reached its email limit. No new link was sent. Please stop retrying for now.'
+   : error?'Could not send the link: '+error.message:'Check your email for your private sign-in link.';
+ if(error)button.disabled=false;
 };
 byId('entryForm').onsubmit=async e=>{
  e.preventDefault();
