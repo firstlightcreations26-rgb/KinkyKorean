@@ -1,0 +1,20 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>
+*{box-sizing:border-box}body{margin:0;background:#eab3c8;color:#382530;font-family:Georgia,serif}.top{background:#211d20;color:#fff;padding:16px 22px;display:flex;justify-content:space-between;align-items:center}.top a{color:#ffd3e4;text-decoration:none}.paper{max-width:770px;min-height:80vh;margin:26px auto 60px;padding:45px clamp(25px,7vw,80px);background:#fffaf5;box-shadow:9px 14px 32px #6b294e55;border-radius:8px;background-image:repeating-linear-gradient(transparent 0,transparent 32px,#e9cdd8 33px,transparent 34px)}h1,h2{font-family:"Bradley Hand","Segoe Print",cursive;color:#b53370}h1{font-size:clamp(2rem,7vw,3.5rem)}p{line-height:1.65}a{color:#a0205b}.card{display:block;background:#fff6fa;border:1px dashed #d48aac;border-radius:8px;margin:13px 0;padding:16px;text-decoration:none;color:#432636}.card:hover{background:#fce0ed}.tag{font:700 12px Arial,sans-serif;color:#a62d66;letter-spacing:.08em}.hidden{display:none}@media(max-width:600px){.paper{margin:12px;padding:30px 25px}}</style><title>Your Private Diary | The Kinky Korean</title><meta name="robots" content="noindex"></head><body><header class="top"><a href="index.html">THE KINKY KOREAN</a><a href="member-login.html">Your key ♡</a></header><main class="paper"><div class="tag">PRIVATE DIARY ♡</div><h1>Your pages are waiting.</h1><p id="status">Checking your diary key…</p><div id="entries"></div><p><a href="archive.html">View the full archive →</a></p></main><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script>
+const kk=supabase.createClient('https://zeeghkticnftmzslbzrc.supabase.co','sb_publishable_c1bDYHzjRzuVrW9DePRo2A_Tn4i5lOO');
+(async()=>{
+ const status=document.getElementById('status'),list=document.getElementById('entries');
+ const {data:{user}}=await kk.auth.getUser();
+ if(!user){status.textContent='Sign in to open your private pages.';list.innerHTML='<a href="member-login.html">Get your sign-in link →</a>';return}
+ const now=new Date().toISOString();
+ const {data:grants,error:grantError}=await kk.from('member_access').select('access_level,entry_slug,expires_at').eq('email',user.email.toLowerCase()).eq('active',true).lte('starts_at',now).gt('expires_at',now);
+ if(grantError||!grants?.length){status.textContent='There is no active diary key for this email yet. If you paid, KK still needs to verify it.';return}
+ const {data:pages,error}=await kk.from('private_entries').select('entry_number,title,tier').eq('published',true).order('entry_number');
+ if(error){status.textContent='Could not load your diary pages. Please try again.';return}
+ status.textContent=pages?.length?'These are the private pages your key can open.':'Your key is active, but KK has not published a private entry for your tier yet.';
+ for(const page of pages||[]){
+   const a=document.createElement('a');a.className='card';a.href='private-entry.html?entry='+page.entry_number;
+   const n=document.createElement('span');n.className='tag';n.textContent='ENTRY #'+String(page.entry_number).padStart(3,'0')+' · '+page.tier.toUpperCase();
+   const h=document.createElement('h2');h.textContent=page.title;a.append(n,h);list.append(a);
+ }
+})();
+</script></body></html>
