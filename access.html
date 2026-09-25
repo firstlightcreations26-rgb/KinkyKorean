@@ -183,6 +183,7 @@ document.getElementById('accessForm').addEventListener('submit',async function(e
     paymentDate:document.getElementById('paymentDate').value,
     memo:document.getElementById('memo').value
   };
+  if(d.plan.startsWith('Single')&&/\b0*2\b/.test(d.entry.trim())){alert('Entry #002 is Unfiltered only. Choose Unfiltered Access for that page.');return;}
   const submitBtn=this.querySelector('button[type="submit"]');
   submitBtn.disabled=true; submitBtn.textContent='sealing your request… 💌';
   const {error}=await kkdb.from('access_requests').insert({plan:d.plan,entry:d.entry||null,display_name:d.name,email:d.email,payment_method:d.method,payment_name:d.paymentName,amount:Number(d.amount),payment_date:d.paymentDate,memo:d.memo});
