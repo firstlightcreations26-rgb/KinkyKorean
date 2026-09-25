@@ -385,3 +385,8 @@ footer{padding:25px 20px 45px;text-align:center;color:#9f9198;font-size:12px}.ti
 .diary-page-menu a:hover,.diary-page-menu a:focus-visible{background:#f5d5e2;text-decoration:underline}
 .diary-page-menu a[aria-current="page"]{background:#e9a6c2;color:#30151f}
 .diary-page-menu .page-menu-number{font-weight:700;color:#a1265a;margin-right:5px}
+
+/* Native page selector for diary entries, including iPhone */
+.diary-page-select{margin-left:auto;max-width:42vw;min-height:44px;padding:7px 28px 7px 12px;border:1px solid #ffdce999;border-radius:8px;background:#48303d;color:#fff;font:700 1.15rem "Caveat",cursive;cursor:pointer;appearance:auto;-webkit-appearance:menulist}
+.diary-page-select:focus-visible{outline:3px solid #ffaecf;outline-offset:2px}
+.diary-page-select option{font:16px "DM Sans",sans-serif;color:#211d20;background:#fff8fb}
