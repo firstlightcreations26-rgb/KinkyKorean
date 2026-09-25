@@ -61,7 +61,7 @@ function makeRequest(r){
  const checked=document.createElement('input');checked.type='checkbox';
  box.append(checked,document.createTextNode('I checked the actual payment in Venmo or Cash App.'));
  card.append(box);
- const button=document.createElement('button');button.type='button';button.textContent='Approve and prepare reply';
+ const button=document.createElement('button');button.type='button';button.textContent='Approve and email buyer';
  const result=document.createElement('p');result.className='small';
  card.append(button,result);
  button.onclick=async()=>{
