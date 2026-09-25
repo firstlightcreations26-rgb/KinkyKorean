@@ -1,0 +1,17 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>
+*{box-sizing:border-box}body{margin:0;background:#eab3c8;color:#382530;font-family:Georgia,serif}.top{background:#211d20;color:#fff;padding:16px 22px;display:flex;justify-content:space-between;align-items:center}.top a{color:#ffd3e4;text-decoration:none}.paper{max-width:770px;min-height:80vh;margin:26px auto 60px;padding:45px clamp(25px,7vw,80px);background:#fffaf5;box-shadow:9px 14px 32px #6b294e55;border-radius:8px;background-image:repeating-linear-gradient(transparent 0,transparent 32px,#e9cdd8 33px,transparent 34px)}h1,h2{font-family:"Bradley Hand","Segoe Print",cursive;color:#b53370}h1{font-size:clamp(2rem,7vw,3.5rem)}p{line-height:1.65}a{color:#a0205b}.card{display:block;background:#fff6fa;border:1px dashed #d48aac;border-radius:8px;margin:13px 0;padding:16px;text-decoration:none;color:#432636}.card:hover{background:#fce0ed}.tag{font:700 12px Arial,sans-serif;color:#a62d66;letter-spacing:.08em}.hidden{display:none}@media(max-width:600px){.paper{margin:12px;padding:30px 25px}}</style><title>Private Diary Entry | The Kinky Korean</title><meta name="robots" content="noindex"><style>#story p{font-family:"Bradley Hand","Segoe Print",cursive;font-size:clamp(1.3rem,4vw,1.6rem);line-height:1.6;margin:0 0 1.25em;white-space:pre-wrap}</style></head><body><header class="top"><a href="index.html">THE KINKY KOREAN</a><a href="private-diary.html">Private pages ♡</a></header><main class="paper"><div id="label" class="tag">PRIVATE DIARY ♡</div><h1 id="title">Checking your diary key…</h1><div id="story"></div><p id="status"></p><p><a href="private-diary.html">← My private pages</a></p></main><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script>
+const kk=supabase.createClient('https://zeeghkticnftmzslbzrc.supabase.co','sb_publishable_c1bDYHzjRzuVrW9DePRo2A_Tn4i5lOO');
+(async()=>{
+ const number=Number(new URLSearchParams(location.search).get('entry'));
+ const title=document.getElementById('title'),story=document.getElementById('story'),status=document.getElementById('status');
+ if(!Number.isInteger(number)||number<2||number>999){title.textContent='Page not found';return}
+ const {data:{user}}=await kk.auth.getUser();
+ if(!user){title.textContent='This page is locked. 🔒';const a=document.createElement('a');a.href='member-login.html';a.textContent='Sign in to read →';status.append(a);return}
+ const {data,error}=await kk.from('private_entries').select('entry_number,title,body_text,tier').eq('entry_number',number).eq('published',true).maybeSingle();
+ if(error||!data){title.textContent='This diary page is still locked. 🔒';status.textContent='Your key may not cover this page, or KK has not published it yet.';return}
+ document.title=data.title+' | The Kinky Korean';
+ document.getElementById('label').textContent='ENTRY #'+String(number).padStart(3,'0')+' · PRIVATE';
+ title.textContent=data.title;
+ for(const part of data.body_text.split(/\n\s*\n/).filter(Boolean)){const p=document.createElement('p');p.textContent=part;story.append(p)}
+})();
+</script></body></html>
