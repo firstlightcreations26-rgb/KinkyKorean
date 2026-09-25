@@ -373,3 +373,15 @@ footer{padding:25px 20px 45px;text-align:center;color:#9f9198;font-size:12px}.ti
 .entry-body .quick-category-links a span{color:#8a3d61;font:600 .8rem/1.3 "DM Sans",sans-serif}
 .entry-body .quick-category-links a:hover,.entry-body .quick-category-links a:focus-visible{background:none;text-decoration:underline;text-underline-offset:3px}
 @media(max-width:650px){.entry-body .quick-category-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 0}.entry-body .quick-category-links a{padding:3px 7px}.entry-body .quick-category-links a:nth-child(odd){padding-left:0}.entry-body .quick-category-links a:nth-child(even){border-right:0}}
+
+/* Diary page picker */
+.diary-page-picker{position:relative;margin-left:auto}
+.diary-page-picker summary{list-style:none;cursor:pointer;font:700 1.15rem "Caveat",cursive;color:#ffdce9;white-space:nowrap;padding:9px 12px;border:1px solid #ffffff55;border-radius:8px}
+.diary-page-picker summary::-webkit-details-marker{display:none}
+.diary-page-picker summary::after{content:" ▾";font-size:.9em}
+.diary-page-picker[open] summary,.diary-page-picker summary:hover,.diary-page-picker summary:focus-visible{background:#5d3146;outline-offset:3px}
+.diary-page-menu{position:absolute;right:0;top:calc(100% + 9px);width:min(340px,calc(100vw - 24px));max-height:min(60vh,470px);overflow-y:auto;overscroll-behavior:contain;background:#fff8fb;color:#38222c;border:2px solid #b83a71;border-radius:12px;box-shadow:0 14px 35px #190a1799;padding:7px;z-index:100}
+.diary-page-menu a{display:block;color:#4d2437;text-decoration:none;font:600 14px/1.35 "DM Sans",sans-serif;padding:10px 12px;border-radius:7px;white-space:normal}
+.diary-page-menu a:hover,.diary-page-menu a:focus-visible{background:#f5d5e2;text-decoration:underline}
+.diary-page-menu a[aria-current="page"]{background:#e9a6c2;color:#30151f}
+.diary-page-menu .page-menu-number{font-weight:700;color:#a1265a;margin-right:5px}
