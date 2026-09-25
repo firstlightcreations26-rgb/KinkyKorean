@@ -395,3 +395,12 @@ footer{padding:25px 20px 45px;text-align:center;color:#9f9198;font-size:12px}.ti
 .diary-page-select{width:112px;max-width:112px;min-height:38px;padding:3px 4px 3px 6px;border-radius:6px;font-size:.96rem;text-overflow:ellipsis}
 .diary-page-select option{font-size:14px}
 @media(max-width:390px){.diary-page-select{width:98px;max-width:98px;font-size:.9rem}}
+
+/* Softer diary archive cards */
+.category-body .archive-card{background:#fff9fc;color:#3f2733;border:1px solid #e7b6c9;box-shadow:4px 7px 17px #68324a35}
+.category-body .archive-card.locked{background:#f8e7ef;color:#46313b;border-color:#daa6bc}
+.category-body .archive-card.locked p{color:#705462}
+.category-body .archive-card.locked b,.category-body .archive-card b{color:#a72e62}
+.category-body .archive-card.locked:before{background:#e9b9cbad}
+.category-body .archive-card.locked h3{filter:none}
+.category-body .archive-card:hover,.category-body .archive-card:focus-visible{background:#ffeefa;box-shadow:4px 9px 20px #68324a55}
