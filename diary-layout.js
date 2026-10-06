@@ -9,8 +9,15 @@
  const links=[['kk-header-home','index.html','The Kinky Korean home'],['kk-header-diary','archive.html','Diaries'],['kk-header-voice','voice.html','KK’s Voice'],['kk-header-extras','private.html','Extras']];
  for(const [cls,href,label] of links){const a=document.createElement('a');a.className=cls;a.href=href;a.setAttribute('aria-label',label);header.append(a)}
  document.body.prepend(header);
- const clip=document.createElement('span');clip.className='kk-paperclip';clip.setAttribute('aria-hidden','true');paper.prepend(clip);
- const kiss=document.createElement('div');kiss.className='kk-kiss';kiss.setAttribute('aria-hidden','true');paper.append(kiss);
+ const art=document.createElement('div');art.className='kk-art';art.setAttribute('aria-hidden','true');
+ for(const name of ['top','middle','bottom']){const band=document.createElement('div');band.className='kk-art-'+name;art.append(band)}
+ paper.prepend(art);
+ const middle=art.querySelector('.kk-art-middle');
+ const fitArt=()=>{const count=Math.max(1,Math.ceil(paper.offsetHeight/Math.max(1,paper.offsetWidth*.4)));while(middle.childElementCount<count){const tile=document.createElement('div');tile.className='kk-art-tile';middle.append(tile)}};
+ fitArt();new ResizeObserver(fitArt).observe(paper);
+ const title=paper.querySelector('h1');
+ const fitTitle=()=>{title?.classList.toggle('kk-long-title',(title.textContent||'').length>75)};
+ fitTitle();if(title)new MutationObserver(fitTitle).observe(title,{childList:true,characterData:true,subtree:true});
  const label=paper.querySelector('.page-label')||paper.querySelector('#label');
  if(label)label.classList.add('page-label');
  const number=privatePage?Number(new URLSearchParams(location.search).get('entry')):Number(location.pathname.match(/entry[-.]?(\d+)/)?.[1]);
