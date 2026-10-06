@@ -30,4 +30,4 @@
 
 .entry-body .entry-page>.kk-drawn-stars{position:absolute!important;right:4cqw;top:56cqw;width:9cqw;height:13cqw;z-index:2!important;pointer-events:none;transform:rotate(9deg)}
 .kk-drawn-stars svg{width:100%;height:100%;overflow:visible;fill:none;stroke:#d8307b;stroke-width:2.3;stroke-linecap:round;stroke-linejoin:round}.kk-drawn-stars svg path:first-child{stroke:#241c21}.kk-even .kk-drawn-stars{transform:rotate(-8deg)!important}
-.entry-body .entry-page.kk-even h1{left:26cqw;width:45cqw;font-size:4cqw!important}.entry-body .entry-page.kk-even h1.kk-long-title{font-size:3.2cqw!important}
+.entry-body .entry-page.kk-even h1{left:26cqw!important;width:45cqw!important;font-size:4cqw!important}.entry-body .entry-page.kk-even h1.kk-long-title{font-size:3.2cqw!important}
