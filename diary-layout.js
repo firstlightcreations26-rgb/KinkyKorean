@@ -22,6 +22,12 @@
  if(label)label.classList.add('page-label');
  const number=privatePage?Number(new URLSearchParams(location.search).get('entry')):Number(location.pathname.match(/entry[-.]?(\d+)/)?.[1]);
  paper.classList.toggle('kk-even',Number.isInteger(number)&&number%2===0);
+ if([3,7,11,16,21,25].includes(number)){
+  const stars=document.createElement('div');stars.className='kk-drawn-stars';stars.setAttribute('aria-hidden','true');
+  stars.innerHTML='<svg viewBox="0 0 100 130" xmlns="http://www.w3.org/2000/svg"><path d="M48 8 L59 43 L91 44 L65 65 L75 99 L47 78 L17 100 L29 65 L5 43 L39 42 Z M46 11 L58 46 L90 45"/><path d="M77 102 L80 113 L92 114 L83 121 L86 132 L76 125 L66 132 L69 120 L60 113 L73 113 Z"/></svg>';
+  paper.append(stars);
+ }
+
  const bottom=document.createElement('div');bottom.className='kk-notebook-bottom';document.querySelector('.entry-wrap').after(bottom);
  let nav=paper.querySelector('.flip-nav');
  if(!nav&&privatePage&&Number.isInteger(number)&&number>=2&&number<=999){nav=document.createElement('nav');nav.className='flip-nav';const prev=document.createElement('a');prev.href=number===2?'entry-001.html':'private-entry.html?entry='+String(number-1).padStart(3,'0');prev.textContent='← Previous';const page=document.createElement('span');page.textContent='PAGE '+String(number).padStart(2,'0');const next=document.createElement('a');next.href='private-diary.html';next.textContent='My private pages →';nav.append(prev,page,next)}

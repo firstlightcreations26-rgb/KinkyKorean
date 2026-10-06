@@ -27,3 +27,6 @@
 @media(max-width:650px){.entry-body .paper.entry-page{padding:31cqw 12cqw 26cqw 17.6cqw!important}.entry-body .entry-page h1{width:57cqw;font-size:5cqw!important}.entry-body .entry-page h1.kk-long-title{font-size:3.8cqw!important}.entry-body .entry-page .page-label{font-size:5cqw!important}.entry-body .entry-page p:not(.eyebrow):not(.lock-small),.entry-body #story p,.entry-body .entry-page .tiny-teaser{font-size:17px!important;line-height:1.5!important}.entry-body .diary-page-select{right:12px;top:4px;min-height:24px;font-size:11px}.entry-body .kk-margin-notes{flex-direction:column;gap:3px}.entry-body .kk-notebook-bottom .flip-nav{padding:0 6cqw;gap:6px}.kk-access-strip{padding:0 13cqw;font-size:18px}.entry-body .kk-worth-quote{font-size:22px!important}}
 
 .entry-body .paper.kk-even{padding-top:34cqw!important}.kk-even .kk-art-top,.kk-even .kk-art-bottom{background-image:url("diary-art-left.jpg")}
+
+.entry-body .entry-page>.kk-drawn-stars{position:absolute!important;right:4cqw;top:56cqw;width:9cqw;height:13cqw;z-index:2!important;pointer-events:none;transform:rotate(9deg)}
+.kk-drawn-stars svg{width:100%;height:100%;overflow:visible;fill:none;stroke:#d8307b;stroke-width:2.3;stroke-linecap:round;stroke-linejoin:round}.kk-drawn-stars svg path:first-child{stroke:#241c21}.kk-even .kk-drawn-stars{transform:rotate(-8deg)!important}
