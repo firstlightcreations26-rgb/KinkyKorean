@@ -1,0 +1,15 @@
+html.kk-age-pending{overflow:hidden!important;background:#000!important}html.kk-age-pending body{visibility:hidden!important}html.kk-age-pending #kk-age-gate{visibility:visible!important}
+#kk-age-gate{box-sizing:border-box;width:min(92vw,490px);max-height:90svh;margin:auto;padding:42px 30px 34px;border:1px solid #cf286c;border-radius:8px;background:#10080e;color:#fff;text-align:center;box-shadow:0 0 70px #c51a5e33;font-family:Arial,sans-serif;overflow:auto}
+#kk-age-gate::backdrop{background:#000}
+#kk-age-gate .kk-age-brand{color:#ee3f89;font-size:15px;letter-spacing:.16em;font-weight:700;margin:0 0 28px;line-height:1.5}
+#kk-age-gate .kk-age-mark{font-size:42px;color:#ee3f89;margin:0 0 16px}
+#kk-age-gate h1{color:#fff;font:600 clamp(27px,6vw,36px)/1.2 Arial,sans-serif;letter-spacing:0;text-shadow:none;transform:none;border:0;margin:0 0 18px;padding:0}
+#kk-age-gate p{font:400 15px/1.65 Arial,sans-serif;color:#d9bdcb;margin:0 0 26px}
+#kk-age-gate .kk-age-actions{display:grid;gap:12px}
+#kk-age-gate button,#kk-age-gate a{box-sizing:border-box;display:block;width:100%;padding:15px 18px;border-radius:4px;font:700 15px/1.2 Arial,sans-serif;cursor:pointer;text-decoration:none;transform:none;text-align:center;min-height:48px}
+#kk-age-gate button{border:1px solid #ef3f89;background:#ef3f89;color:#13080d}
+#kk-age-gate a{border:1px solid #80536a;background:transparent;color:#ecd4df}
+#kk-age-gate button:hover{background:#ff72a8}#kk-age-gate a:hover{background:#28101e}
+#kk-age-gate :focus-visible{outline:3px solid #fff;outline-offset:4px}
+.kk-footer-shortcuts{display:flex;flex-wrap:wrap;justify-content:center;gap:12px 22px;padding:20px 16px;margin:0 auto;max-width:1024px;font:600 13px/1.5 Arial,sans-serif;background:transparent}
+.kk-footer-shortcuts a{color:#e88caf!important;text-decoration:none}.kk-footer-shortcuts a:hover{text-decoration:underline}.kk-footer-shortcuts a:focus-visible{outline:2px solid #ec6b9e;outline-offset:4px}
