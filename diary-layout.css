@@ -38,3 +38,7 @@
 .entry-body .kk-notebook-bottom .flip-nav a,.entry-body .kk-notebook-bottom .flip-nav span{position:relative;display:block!important;line-height:1.3;white-space:normal}
 .entry-body .kk-notebook-bottom .kk-access-strip{box-sizing:border-box;height:auto;min-height:96px;padding:22px 15cqw;margin:0 0 28px;line-height:1.3;background-size:100% 1536%;background-position:center bottom}
 @media(max-width:650px){.entry-body .kk-notebook-bottom .flip-nav{padding-left:5cqw;padding-right:5cqw;gap:10px;font-size:20px!important}.entry-body .kk-notebook-bottom .flip-nav span{font-size:16px!important}.entry-body .kk-notebook-bottom .kk-access-strip{padding:22px 13cqw;font-size:18px;min-height:104px}}
+
+/* Restore the journal's original handwritten reading font. */
+.entry-body:not(.kk-feature-page) .entry-page p:not(.eyebrow):not(.lock-small),.entry-body:not(.kk-feature-page) #story p,.entry-body:not(.kk-feature-page) .entry-page .tiny-teaser{font-family:'Shadows Into Light',cursive!important;font-size:clamp(20px,2.7cqw,28px)!important;font-weight:400;line-height:1.65!important}
+@media(max-width:650px){.entry-body:not(.kk-feature-page) .entry-page p:not(.eyebrow):not(.lock-small),.entry-body:not(.kk-feature-page) #story p,.entry-body:not(.kk-feature-page) .entry-page .tiny-teaser{font-size:20px!important;line-height:1.65!important}}
