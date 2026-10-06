@@ -11,7 +11,7 @@
 .kk-art-top{position:absolute;top:0;height:33.2cqw;background-position:0 -10.74cqw}
 .kk-art-bottom{position:absolute;bottom:0;height:31.25cqw;background-position:0 -99.6cqw}
 .kk-art-middle{position:absolute;top:33.2cqw;bottom:31.25cqw;left:0;right:0;overflow:hidden}
-.kk-art-tile{height:40cqw;background-position:0 -43.945cqw}
+.kk-art-tile{height:35cqw;background-position:0 -50.78cqw}
 .entry-body .entry-page .page-label{position:absolute!important;top:6cqw;left:16.6cqw;font:500 4.3cqw/1 'Caveat',cursive!important;color:#21171a!important;letter-spacing:0!important;margin:0!important;border:0!important;background:none!important;padding:0!important;transform:rotate(-3deg)!important}.entry-body .entry-page .page-label:after{content:''!important}
 .entry-body .entry-page h1{position:absolute!important;top:12.3cqw;left:17.5cqw;width:54cqw;height:11cqw;display:flex;align-items:center;font:400 4.45cqw/1.1 'Caveat',cursive!important;color:#151113!important;border:0!important;margin:0!important;padding:0!important;text-wrap:balance;transform:rotate(-3deg)}
 .entry-body .entry-page h1.kk-long-title{font-size:3.45cqw!important}
@@ -25,3 +25,5 @@
 .kk-access-strip{display:flex;align-items:center;justify-content:center;text-align:center;height:10cqw;min-height:62px;margin:0;padding:0 15cqw;color:#171014;font:clamp(18px,2.7cqw,29px)/1.15 'Caveat',cursive;background:#000 url('diary-art.jpg') 0 -140.6cqw/100% auto no-repeat}
 .entry-body .kk-notebook-bottom .kk-tip-wrap{margin:30px auto!important;max-width:800px;background:none!important;color:#eac4d5!important}.entry-body .kk-notebook-bottom .kk-tip-copy strong,.entry-body .kk-notebook-bottom .kk-tip-copy span{color:#ef8db3!important}.entry-body .kk-notebook-bottom .quick-categories{padding:0 24px!important}.entry-body .kk-notebook-bottom .quick-category-links a span{color:#ef8db3!important}.entry-body .kk-notebook-bottom .quick-categories-kicker{color:#dd90af!important}.entry-body footer,.entry-body footer a{color:#cc8da8!important}
 @media(max-width:650px){.entry-body .paper.entry-page{padding:31cqw 12cqw 26cqw 17.6cqw!important}.entry-body .entry-page h1{width:57cqw;font-size:5cqw!important}.entry-body .entry-page h1.kk-long-title{font-size:3.8cqw!important}.entry-body .entry-page .page-label{font-size:5cqw!important}.entry-body .entry-page p:not(.eyebrow):not(.lock-small),.entry-body #story p,.entry-body .entry-page .tiny-teaser{font-size:17px!important;line-height:1.5!important}.entry-body .diary-page-select{right:12px;top:4px;min-height:24px;font-size:11px}.entry-body .kk-margin-notes{flex-direction:column;gap:3px}.entry-body .kk-notebook-bottom .flip-nav{padding:0 6cqw;gap:6px}.kk-access-strip{padding:0 13cqw;font-size:18px}.entry-body .kk-worth-quote{font-size:22px!important}}
+
+.entry-body .paper.kk-even{padding-top:34cqw!important}.kk-even .kk-art-top,.kk-even .kk-art-bottom{background-image:url("diary-art-left.jpg")}

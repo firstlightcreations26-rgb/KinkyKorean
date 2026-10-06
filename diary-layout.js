@@ -13,7 +13,7 @@
  for(const name of ['top','middle','bottom']){const band=document.createElement('div');band.className='kk-art-'+name;art.append(band)}
  paper.prepend(art);
  const middle=art.querySelector('.kk-art-middle');
- const fitArt=()=>{const count=Math.max(1,Math.ceil(paper.offsetHeight/Math.max(1,paper.offsetWidth*.4)));while(middle.childElementCount<count){const tile=document.createElement('div');tile.className='kk-art-tile';middle.append(tile)}};
+ const fitArt=()=>{const count=Math.max(1,Math.ceil(paper.offsetHeight/Math.max(1,paper.offsetWidth*.35)));while(middle.childElementCount<count){const tile=document.createElement('div');tile.className='kk-art-tile';middle.append(tile)}};
  fitArt();new ResizeObserver(fitArt).observe(paper);
  const title=paper.querySelector('h1');
  const fitTitle=()=>{title?.classList.toggle('kk-long-title',(title.textContent||'').length>75)};
@@ -21,6 +21,7 @@
  const label=paper.querySelector('.page-label')||paper.querySelector('#label');
  if(label)label.classList.add('page-label');
  const number=privatePage?Number(new URLSearchParams(location.search).get('entry')):Number(location.pathname.match(/entry[-.]?(\d+)/)?.[1]);
+ paper.classList.toggle('kk-even',Number.isInteger(number)&&number%2===0);
  const bottom=document.createElement('div');bottom.className='kk-notebook-bottom';document.querySelector('.entry-wrap').after(bottom);
  let nav=paper.querySelector('.flip-nav');
  if(!nav&&privatePage&&Number.isInteger(number)&&number>=2&&number<=999){nav=document.createElement('nav');nav.className='flip-nav';const prev=document.createElement('a');prev.href=number===2?'entry-001.html':'private-entry.html?entry='+String(number-1).padStart(3,'0');prev.textContent='← Previous';const page=document.createElement('span');page.textContent='PAGE '+String(number).padStart(2,'0');const next=document.createElement('a');next.href='private-diary.html';next.textContent='My private pages →';nav.append(prev,page,next)}
