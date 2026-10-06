@@ -31,3 +31,10 @@
 .entry-body .entry-page>.kk-drawn-stars{position:absolute!important;right:4cqw;top:56cqw;width:9cqw;height:13cqw;z-index:2!important;pointer-events:none;transform:rotate(9deg)}
 .kk-drawn-stars svg{width:100%;height:100%;overflow:visible;fill:none;stroke:#d8307b;stroke-width:2.3;stroke-linecap:round;stroke-linejoin:round}.kk-drawn-stars svg path:first-child{stroke:#241c21}.kk-even .kk-drawn-stars{transform:rotate(-8deg)!important}
 .entry-body .entry-page.kk-even h1{left:26cqw!important;width:45cqw!important;font-size:4cqw!important}.entry-body .entry-page.kk-even h1.kk-long-title{font-size:3.2cqw!important}
+
+/* Keep page turns and access labels separate at every screen width. */
+.entry-body .kk-notebook-bottom .flip-nav{grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);height:auto;min-height:104px;padding-top:20px;padding-bottom:20px;margin:0 0 20px!important;background:#000;box-sizing:border-box}
+.entry-body .kk-notebook-bottom .flip-nav::before{content:"";position:absolute;inset:0 0 auto;height:9.74cqw;background:url('diary-art.jpg') 0 -130.86cqw/100% auto no-repeat;pointer-events:none}
+.entry-body .kk-notebook-bottom .flip-nav a,.entry-body .kk-notebook-bottom .flip-nav span{position:relative;display:block!important;line-height:1.3;white-space:normal}
+.entry-body .kk-notebook-bottom .kk-access-strip{box-sizing:border-box;height:auto;min-height:96px;padding:22px 15cqw;margin:0 0 28px;line-height:1.3;background-size:100% 1536%;background-position:center bottom}
+@media(max-width:650px){.entry-body .kk-notebook-bottom .flip-nav{padding-left:5cqw;padding-right:5cqw;gap:10px;font-size:20px!important}.entry-body .kk-notebook-bottom .flip-nav span{font-size:16px!important}.entry-body .kk-notebook-bottom .kk-access-strip{padding:22px 13cqw;font-size:18px;min-height:104px}}
