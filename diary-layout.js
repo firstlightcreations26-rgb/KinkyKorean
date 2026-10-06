@@ -20,7 +20,7 @@
  fitTitle();if(title)new MutationObserver(fitTitle).observe(title,{childList:true,characterData:true,subtree:true});
  const label=paper.querySelector('.page-label')||paper.querySelector('#label');
  if(label)label.classList.add('page-label');
- const number=privatePage?Number(new URLSearchParams(location.search).get('entry')):Number(location.pathname.match(/entry[-.]?(\d+)/)?.[1]);
+ const number=privatePage?Number(new URLSearchParams(location.search).get('entry')):Number(document.body.classList.contains('kk-feature-page')?label?.textContent.match(/\d+/)?.[0]:location.pathname.match(/entry[-.]?(\d+)/)?.[1]);
  paper.classList.toggle('kk-even',Number.isInteger(number)&&number%2===0);
  if([3,7,11,16,21,25].includes(number)){
   const stars=document.createElement('div');stars.className='kk-drawn-stars';stars.setAttribute('aria-hidden','true');
@@ -32,8 +32,10 @@
  let nav=paper.querySelector('.flip-nav');
  if(!nav&&privatePage&&Number.isInteger(number)&&number>=2&&number<=999){nav=document.createElement('nav');nav.className='flip-nav';const prev=document.createElement('a');prev.href=number===2?'entry-001.html':'private-entry.html?entry='+String(number-1).padStart(3,'0');prev.textContent='← Previous';const page=document.createElement('span');page.textContent='PAGE '+String(number).padStart(2,'0');const next=document.createElement('a');next.href='private-diary.html';next.textContent='My private pages →';nav.append(prev,page,next)}
  if(nav)bottom.append(nav);
+ if(!document.body.classList.contains('kk-feature-page')){
  const strip=document.createElement('div');strip.className='kk-access-strip';bottom.append(strip);
  if(privatePage){strip.textContent='🔒 MEMBERS’ DIARY ♡'}else{const free=/\bFREE\b/i.test(label?.textContent||'');strip.textContent=free?'THIS ENTRY IS FREE — WELCOME TO MY DIARY ♡':'🔒 THIS DIARY PAGE IS LOCKED ♡';if(label&&number)label.textContent='Page '+String(number).padStart(2,'0')}
+ }
  for(const el of paper.querySelectorAll('.kk-tip-wrap,.quick-categories'))bottom.append(el);
  if(privatePage){const observer=new MutationObserver(()=>{if(label&&/^ENTRY #/.test(label.textContent))label.textContent='Page '+String(number).padStart(2,'0')});if(label)observer.observe(label,{childList:true,characterData:true,subtree:true})}
 })();

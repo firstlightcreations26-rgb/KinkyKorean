@@ -1,0 +1,16 @@
+/* Service pages use the same paper art and page-turn spacing as the diary. */
+.kk-feature-page .inner{position:static;padding:0}
+.kk-feature-page .entry-page h1{font-size:4.2cqw!important;text-align:left}
+.kk-feature-page .kk-feature-kicker,.kk-feature-page .kicker{font:600 clamp(17px,2.6cqw,27px)/1.3 'Caveat',cursive;color:#b52b66;margin:0 0 16px;text-align:left}
+.kk-feature-page .kk-feature-photo{justify-content:center!important;display:flex!important;margin:0 0 24px!important}
+.kk-feature-page .kk-feature-photo img{width:min(70%,260px)!important;max-width:100%;height:auto}
+.kk-feature-page .entry-page h2{font:600 clamp(23px,3.2cqw,32px)/1.25 'Caveat',cursive;color:#b52b66;margin:0 0 14px}
+.kk-feature-page .card{background:#fff5e6b8;border:1px dashed #bd6382;padding:20px;margin:24px 0;box-shadow:3px 4px 0 #c88a9c33;transform:none}
+.kk-feature-page .prices{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px 20px;font:600 clamp(16px,2cqw,20px)/1.4 Arial,sans-serif}
+.kk-feature-page .entry-page .card p.small{font-size:clamp(16px,2cqw,21px)!important;line-height:1.5!important;margin:16px 0 0!important}
+.kk-feature-page .request{overflow-wrap:anywhere;font-size:20px}
+.kk-feature-page .pay,.kk-feature-page .unlock-main{max-width:100%;white-space:normal;line-height:1.4}
+.kk-feature-page .voice-list{max-width:100%}
+.kk-feature-page .kk-notebook-bottom .all-categories-link{margin:24px auto;text-align:center;line-height:2;font:600 14px/2 Arial,sans-serif;color:#e88caf;max-width:850px}
+.kk-feature-page .kk-notebook-bottom .all-categories-link a{color:#e88caf}
+@media(max-width:650px){.kk-feature-page .entry-page h1{font-size:4.8cqw!important}.kk-feature-page .card{padding:14px}.kk-feature-page .entry-page .card p.small{font-size:16px!important}.kk-feature-page .prices{gap:10px 12px}}
