@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap');
 /* Approved shaded-heart card. Payment destinations remain unchanged. */
 .kk-tip-wrap,.entry-body .kk-notebook-bottom .kk-tip-wrap{display:grid!important;grid-template-columns:145px minmax(0,1fr);gap:28px!important;align-items:center;width:calc(100% - 40px);max-width:980px!important;margin:32px auto!important;padding:30px 34px!important;background:#000!important;border:1px solid #e4619d;border-radius:8px;box-sizing:border-box;color:#fff!important}
-.kk-tip-jar{display:block!important;width:145px!important;height:116px!important;flex:none!important;transform:none!important;filter:none!important;background:url('tip-jar-approved.png') 6.532% 79.422%/661.333% 330.833% no-repeat;border:0;border-right:1px solid #d53a84;border-radius:0}
+.kk-tip-jar{display:block!important;width:145px!important;height:116px!important;flex:none!important;transform:none!important;filter:none!important;background:url('tip-jar-approved.png?v=2') 6.532% 79.422%/661.333% 330.833% no-repeat;border:0;border-right:1px solid #d53a84;border-radius:0}
 .kk-tip-jar>*{display:none!important}
 .kk-tip-copy{display:grid!important;grid-template-columns:minmax(0,1fr) minmax(260px,.95fr);column-gap:28px;align-items:center;font-family:'Alex Brush','Caveat',cursive;transform:none!important;text-align:left}
 .kk-tip-copy strong,.entry-body .kk-notebook-bottom .kk-tip-copy strong{grid-column:1;font:400 clamp(42px,4.8vw,66px)/1.1 'Alex Brush','Caveat',cursive!important;color:#fff!important}
