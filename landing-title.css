@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Alex+Brush&family=Caveat:wght@700&display=swap');
 /* Keep the approved landing artwork and its clickable cards. */
+.desktop-category-copy{position:absolute;left:3.4%;top:46%;width:74%;height:46%;padding:1.2% 0;background:#000;display:flex;flex-direction:column;justify-content:center;gap:5px;color:#fff}
+.desktop-category-name{display:block;font:400 clamp(13px,1.95vw,30px)/1.2 Georgia,serif;text-transform:uppercase;white-space:nowrap}
+.desktop-category-subtitle{display:block;color:#ee8eb3;font:400 clamp(8px,1.17vw,18px)/1.3 Arial,sans-serif;text-transform:uppercase;letter-spacing:.18em}
 .landing-title{position:absolute;z-index:2;left:15.5%;top:4.1%;width:62%;height:12.5%;display:flex;align-items:center;justify-content:center;margin:0;padding:0;background:#000;color:#ec3583;font:700 clamp(24px,6vw,92px)/1 'Caveat',cursive;letter-spacing:.025em;text-transform:uppercase;-webkit-text-stroke:1px #fff;text-shadow:0 2px 0 #000;white-space:nowrap;pointer-events:none}
 .landing-footer{width:min(100%,1536px);margin:0 auto;padding:8px 20px 24px;text-align:center}
 .landing-footer .kk-footer-shortcuts{display:flex;flex-wrap:wrap;justify-content:center;gap:16px 42px}
