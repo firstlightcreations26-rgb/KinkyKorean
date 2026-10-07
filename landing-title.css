@@ -5,12 +5,12 @@
 .desktop-category-subtitle{display:block;color:#ee8eb3;font:400 clamp(8px,1.17vw,18px)/1.3 Arial,sans-serif;text-transform:uppercase;letter-spacing:.18em}
 .landing-title{position:absolute;z-index:2;left:15.5%;top:4.1%;width:62%;height:12.5%;display:flex;align-items:center;justify-content:center;margin:0;padding:0;background:#000;color:#ec3583;font:700 clamp(24px,6vw,92px)/1 'Caveat',cursive;letter-spacing:.025em;text-transform:uppercase;-webkit-text-stroke:1px #fff;text-shadow:0 2px 0 #000;white-space:nowrap;pointer-events:none}
 .landing-footer{width:min(100%,1536px);margin:0 auto;padding:8px 20px 24px;text-align:center}
-.landing-footer .kk-footer-shortcuts{display:flex;flex-wrap:wrap;justify-content:center;gap:16px 42px}
-.landing-footer .kk-footer-shortcuts a{color:#fff;font:400 clamp(30px,3vw,40px)/1.3 'Alex Brush','Caveat',cursive;text-decoration:none;display:inline-block;padding:6px 4px;min-height:44px}
-.landing-footer .kk-footer-shortcuts a:hover{text-decoration:underline;text-underline-offset:6px;text-decoration-color:#ec3583}
+.landing-footer .kk-footer-shortcuts{display:flex;flex-wrap:wrap;justify-content:center;gap:12px 18px}
+.landing-footer .kk-footer-shortcuts a{color:#fff!important;font:500 16px/1.3 Arial,Helvetica,sans-serif;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;padding:12px 24px;min-height:48px;min-width:150px;border:1px solid #ec3583;border-radius:0;background:#000;letter-spacing:.04em}
+.landing-footer .kk-footer-shortcuts a:hover{background:#24101b;border-color:#fff}
 .landing-footer .kk-footer-shortcuts a:focus-visible{outline:2px solid #ec3583;outline-offset:5px}
 .landing-signoff{margin:8px 0 0;color:#e8a1bd;font:400 clamp(19px,2vw,24px)/1.4 'Alex Brush','Caveat',cursive}
 @media(max-width:650px){body{align-content:start}.landing-title{-webkit-text-stroke:.5px #fff;font-size:6vw}.landing-footer{padding-top:16px}.landing-footer .kk-footer-shortcuts{gap:12px 30px}}
 
-/* Mobile footer labels: smaller white handwriting, with full-size tap targets. */
-@media(max-width:650px){.landing-footer .kk-footer-shortcuts a{color:#fff!important;font-size:24px;line-height:1.3;min-height:44px}.landing-footer .kk-footer-shortcuts{gap:12px 26px}}
+/* Mobile footer boxes: readable white labels and full-size tap targets. */
+@media(max-width:650px){.landing-footer .kk-footer-shortcuts a{font-size:14px;line-height:1.3;min-height:48px;min-width:0;flex:1 1 120px;max-width:180px;padding:12px 16px}.landing-footer .kk-footer-shortcuts{gap:12px}}
