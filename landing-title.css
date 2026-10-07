@@ -8,3 +8,6 @@
 .landing-footer .kk-footer-shortcuts a:focus-visible{outline:2px solid #ec3583;outline-offset:5px}
 .landing-signoff{margin:8px 0 0;color:#e8a1bd;font:400 clamp(19px,2vw,24px)/1.4 'Alex Brush','Caveat',cursive}
 @media(max-width:650px){body{align-content:start}.landing-title{-webkit-text-stroke:.5px #fff;font-size:6vw}.landing-footer{padding-top:16px}.landing-footer .kk-footer-shortcuts{gap:12px 30px}}
+
+/* Mobile footer labels: smaller white handwriting, with full-size tap targets. */
+@media(max-width:650px){.landing-footer .kk-footer-shortcuts a{color:#fff!important;font-size:24px;line-height:1.3;min-height:44px}.landing-footer .kk-footer-shortcuts{gap:12px 26px}}
