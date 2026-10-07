@@ -1,0 +1,33 @@
+/* Shared service footer and mobile-friendly letter/check-in content. */
+.kk-feature-page .entry-page>*:not(.kk-art){min-width:0;max-width:100%;box-sizing:border-box}
+.kk-feature-page .dear-kk-intro{display:grid;grid-template-columns:minmax(0,1fr) 150px;align-items:end;gap:24px;margin:20px 0 32px}
+.kk-feature-page .dear-kk-intro .tiny-teaser{width:auto;flex:none;padding:20px!important;font:400 23px/1.5 'Caveat',cursive!important;margin:0!important;transform:none}
+.kk-feature-page .kk-photo-doodle{left:0!important;width:100%!important;max-width:150px;justify-self:end;flex:none!important}
+.kk-feature-page .dear-kk-photo{width:100%!important;max-width:150px!important}
+.kk-feature-page .paywall-note{width:100%;padding:20px;transform:none;margin:28px 0!important;box-sizing:border-box}
+.kk-feature-page .paywall-note strong{font:600 28px/1.3 'Caveat',cursive}
+.kk-feature-page .scrap-note{padding:20px;transform:none;overflow-wrap:anywhere}
+.kk-feature-page .modal-box{min-width:0;max-width:100%!important;padding:20px!important;font:400 16px/1.5 'DM Sans',Arial,sans-serif}
+.kk-feature-page .modal-box input,.kk-feature-page .modal-box select,.kk-feature-page .modal-box textarea{min-width:0;font:400 16px/1.5 'DM Sans',Arial,sans-serif;max-width:100%;box-sizing:border-box}
+.kk-feature-page .kk-consequence-quote{margin:24px 0;padding:16px 0}
+.kk-service-footer{max-width:980px;margin:32px auto 16px;padding:0 24px;text-align:center;font:400 12px/1.8 Arial,sans-serif;color:#cc8da8}
+.kk-service-footer nav{display:flex;flex-wrap:wrap;justify-content:center;gap:4px 14px;margin-top:6px}
+.kk-feature-page .kk-notebook-bottom .quick-categories{max-width:980px;margin:24px auto!important;padding:0 24px!important}
+@media(max-width:650px){
+ .kk-feature-page .dear-kk-intro{grid-template-columns:minmax(0,1fr);gap:24px}
+ .kk-feature-page .dear-kk-intro .tiny-teaser{font-size:21px!important;padding:16px!important}
+ .kk-feature-page .kk-photo-doodle{max-width:130px;margin-right:12px}
+ .kk-feature-page .paywall-note,.kk-feature-page .scrap-note{padding:16px}
+ .kk-feature-page .paywall-note strong{font-size:25px}
+ .kk-feature-page .modal-box{padding:16px!important}
+ .kk-feature-page .entry-page .scrap-note p{font-size:17px!important;line-height:1.6!important}
+ .kk-feature-page .unlock-actions{display:grid;grid-template-columns:minmax(0,1fr);gap:12px}
+ .kk-feature-page .unlock-main{width:100%;box-sizing:border-box;text-align:center}
+ .kk-feature-page .kk-notebook-bottom .kk-tip-wrap{grid-template-columns:64px minmax(0,1fr);gap:14px!important;padding:20px 16px!important}
+ .kk-feature-page .kk-notebook-bottom .kk-tip-jar{width:64px!important;height:52px!important}
+ .kk-feature-page .kk-notebook-bottom .kk-tip-copy{min-width:0}
+ .kk-feature-page .kk-notebook-bottom .kk-tip-copy strong{white-space:nowrap;font-size:42px!important}
+ .kk-feature-page .kk-notebook-bottom .kk-tip-copy span{font-size:22px!important;line-height:1.35!important}
+ .kk-feature-page .kk-notebook-bottom .kk-tip-links{grid-template-columns:minmax(0,1fr)}
+ .kk-feature-page .kk-notebook-bottom .kk-tip-links a{white-space:nowrap;letter-spacing:1px;padding:12px 8px}
+}
