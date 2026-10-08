@@ -34,7 +34,7 @@
  if(nav)bottom.append(nav);
  if(!document.body.classList.contains('kk-feature-page')){
  const strip=document.createElement('div');strip.className='kk-access-strip';bottom.append(strip);
- if(privatePage){strip.textContent='🔒 MEMBERS’ DIARY ♡'}else{const free=/\bFREE\b/i.test(label?.textContent||'');strip.textContent=free?'THIS ENTRY IS FREE — WELCOME TO MY DIARY ♡':'🔒 THIS DIARY PAGE IS LOCKED ♡';if(label&&number)label.textContent='Page '+String(number).padStart(2,'0')}
+ if(privatePage){strip.textContent='🔒 MEMBERS’ DIARY ♡'}else{const free=/\bFREE\b/i.test(label?.textContent||'');strip.textContent=/\bPREVIEW\b/i.test(label?.textContent||'')?'FREE PREVIEW — THE REST IS FOR PAID READERS ♡':free?'THIS ENTRY IS FREE — WELCOME TO MY DIARY ♡':'🔒 THIS DIARY PAGE IS LOCKED ♡';if(label&&number)label.textContent='Page '+String(number).padStart(2,'0')}
  }
  for(const el of paper.querySelectorAll('.kk-tip-wrap,.quick-categories'))bottom.append(el);
  if(privatePage){const observer=new MutationObserver(()=>{if(label&&/^ENTRY #/.test(label.textContent))label.textContent='Page '+String(number).padStart(2,'0')});if(label)observer.observe(label,{childList:true,characterData:true,subtree:true})}
