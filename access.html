@@ -53,11 +53,11 @@ input,select{width:100%;border:0;border-bottom:2px solid #c88ba3;background:tran
 
 <div class="note blacknote selected" id="membership">
 <span class="price">$8</span><h2 class="script">🔒 Full Diary Membership</h2>
-<p>One simple membership opens every locked diary story and all KK voice clips for 30 days.</p>
-<p class="small">No separate tiers. No single-page charge. One key opens it all.</p>
-<button onclick="pickMembership()">get full access →</button>
+<p>One simple membership opens every locked diary story for 30 days. Add my full voice library for $10 more.</p>
+<p class="small">No confusing tiers. Choose the diary alone for $8, or add every voice clip for $18 total.</p>
+<button onclick="pickMembership()">choose your membership →</button>
 </div>
-<p class="script" style="text-align:right">one key. every private page. 💋</p>
+<p class="script" style="text-align:right">every private page. voice is optional. 💋</p>
 
 <p class="script" style="text-align:right">careful what you unlock… 💋</p>
 </section>
@@ -72,13 +72,14 @@ input,select{width:100%;border:0;border-bottom:2px solid #c88ba3;background:tran
 
 <div class="memo-note">
 <strong>💗 Please include this memo with your payment.</strong>
-<p class="small"><b>“Full Diary Membership”</b></p>
+<p class="small"><b>“Full Diary Membership”</b><br>or <b>“Full Diary + Voice”</b></p>
 </div>
 
 <div class="formpaper">
 <form id="accessForm">
 <label>Your membership</label>
-<select id="plan" required><option>Full Diary Membership — $8</option></select>
+<select id="plan" required disabled><option>Full Diary Membership — $8</option></select>
+<div class="checkbox"><input id="voiceAddon" type="checkbox"><span><strong>Add the complete KK voice library for $10.</strong><br>Diary + voice total: $18 for 30 days.</span></div>
 
 <label>What should I call you?</label>
 <input id="name" required placeholder="display name">
@@ -121,32 +122,41 @@ input,select{width:100%;border:0;border-bottom:2px solid #c88ba3;background:tran
 </main><nav style="max-width:1050px;margin:18px auto;display:flex;justify-content:space-between;font-family:'Bradley Hand','Segoe Print',cursive;font-size:20px"><a href="entry-001.html">← Flip Back</a><a href="entry.002.html">Turn Page →</a></nav></div>
 <script>
 const kkdb=supabase.createClient('https://zeeghkticnftmzslbzrc.supabase.co','sb_publishable_c1bDYHzjRzuVrW9DePRo2A_Tn4i5lOO');
-function pickMembership(scroll=true){
-  document.getElementById('plan').value='Full Diary Membership — $8';
-  document.getElementById('memo').value='Full Diary Membership';
-  document.getElementById('amount').value='8';
+function syncMembership(scroll=false){
+  const withVoice=document.getElementById('voiceAddon').checked;
+  const plan=withVoice?'Full Diary + Voice — $18':'Full Diary Membership — $8';
+  const memo=withVoice?'Full Diary + Voice':'Full Diary Membership';
+  const amount=withVoice?'18':'8';
+  document.getElementById('plan').value=withVoice?'Full Diary Membership — $8':'Full Diary Membership — $8';
+  document.getElementById('memo').value=memo;
+  document.getElementById('amount').value=amount;
+  document.getElementById('amount').placeholder='$'+amount;
   document.getElementById('membership').classList.add('selected');
   if(scroll) document.getElementById('request').scrollIntoView({behavior:'smooth'});
+  return {plan,memo,amount};
 }
+function pickMembership(){syncMembership(true)}
+document.getElementById('voiceAddon').addEventListener('change',()=>syncMembership(false));
 document.getElementById('accessForm').addEventListener('submit',async function(e){
   e.preventDefault();
+  const selection=syncMembership(false);
   const d={
-    plan:'Full Diary Membership — $8',
+    plan:selection.plan,
     entry:'',
     name:document.getElementById('name').value,
     email:document.getElementById('email').value,
     method:document.getElementById('method').value,
     paymentName:document.getElementById('paymentName').value,
-    amount:'8',
+    amount:selection.amount,
     paymentDate:document.getElementById('paymentDate').value,
-    memo:'Full Diary Membership'
+    memo:selection.memo
   };
   const submitBtn=this.querySelector('button[type="submit"]');
   submitBtn.disabled=true; submitBtn.textContent='sealing your request… 💌';
-  const {error}=await kkdb.from('access_requests').insert({plan:d.plan,entry:null,display_name:d.name,email:d.email,payment_method:d.method,payment_name:d.paymentName,amount:8,payment_date:d.paymentDate,memo:d.memo});
+  const {error}=await kkdb.from('access_requests').insert({plan:d.plan,entry:null,display_name:d.name,email:d.email,payment_method:d.method,payment_name:d.paymentName,amount:Number(d.amount),payment_date:d.paymentDate,memo:d.memo});
   if(error){submitBtn.disabled=false;submitBtn.textContent='seal my request 💌';alert('Your request didn’t save. Please try again, or email info@kinkykorean.blog for help.');return;}
   sessionStorage.setItem('kkAccessRequest',JSON.stringify(d));
   location.href='access-received.html';
 });
-pickMembership(false);
+syncMembership(false);
 </script><footer><nav class="kk-footer-shortcuts" aria-label="Private messages and check-in"><a href="dear-kk.html">Dear KK</a><a href="check-in.html">KK Check-In</a></nav></footer></body></html>

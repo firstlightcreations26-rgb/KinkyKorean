@@ -48,7 +48,7 @@ async function checkAccess(){
  if(!data?.length){statusEl.textContent='This diary key is locked or expired. If you paid, reply to your confirmation email. 🔒';return}
  form.classList.add('hidden');member.classList.remove('hidden');statusEl.textContent='';
  const links=document.getElementById('accessLinks');links.replaceChildren();
- document.getElementById('accessText').textContent='Your Full Diary Membership is active.';
+ const hasVoice=data.some(grant=>['full_diary_voice','unfiltered'].includes(grant.access_level));\n document.getElementById('accessText').textContent=hasVoice?'Your Full Diary + Voice membership is active.':'Your Full Diary Membership is active.';
  for(const grant of data){
    const p=document.createElement('p'),a=document.createElement('a');
    if(grant.access_level==='single_entry'){
@@ -61,6 +61,7 @@ async function checkAccess(){
    p.append(a,document.createTextNode(' · through '+new Date(grant.expires_at).toLocaleDateString()));
    links.append(p);
  }
+ if(hasVoice){const p=document.createElement('p'),a=document.createElement('a');a.href='voice.html';a.textContent='Open the private KK voice library →';p.append(a);links.append(p);}
 }
 form.addEventListener('submit',async e=>{
  e.preventDefault();statusEl.textContent='Sending your private link…';
