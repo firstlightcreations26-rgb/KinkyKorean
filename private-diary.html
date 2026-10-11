@@ -13,7 +13,7 @@ const kk=supabase.createClient('https://zeeghkticnftmzslbzrc.supabase.co','sb_pu
  status.textContent=pages?.length?'These are the private pages your key can open.':'Your key is active, but KK has not published a private entry for your tier yet.';
  for(const page of pages||[]){
    const a=document.createElement('a');a.className='card';a.href='private-entry.html?entry='+page.entry_number;
-   const n=document.createElement('span');n.className='tag';n.textContent='ENTRY #'+String(page.entry_number).padStart(3,'0')+' · '+page.tier.toUpperCase();
+   const n=document.createElement('span');n.className='tag';n.textContent='ENTRY #'+String(page.entry_number).padStart(3,'0')+' · MEMBERS';
    const h=document.createElement('h2');h.textContent=page.title;a.append(n,h);list.append(a);
  }
 })();

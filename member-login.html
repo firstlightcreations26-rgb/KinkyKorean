@@ -48,7 +48,7 @@ async function checkAccess(){
  if(!data?.length){statusEl.textContent='This diary key is locked or expired. If you paid, reply to your confirmation email. 🔒';return}
  form.classList.add('hidden');member.classList.remove('hidden');statusEl.textContent='';
  const links=document.getElementById('accessLinks');links.replaceChildren();
- document.getElementById('accessText').textContent='You have '+data.length+' active diary key'+(data.length===1?'':'s')+'.';
+ document.getElementById('accessText').textContent='Your Full Diary Membership is active.';
  for(const grant of data){
    const p=document.createElement('p'),a=document.createElement('a');
    if(grant.access_level==='single_entry'){
@@ -56,7 +56,7 @@ async function checkAccess(){
      a.textContent='Open Entry #'+grant.entry_slug+' →';
    } else {
      a.href='private-diary.html';
-     a.textContent='Open '+(grant.access_level==='unfiltered'?'Unfiltered':'Daily')+' diary →';
+     a.textContent='Open the full members’ diary →';
    }
    p.append(a,document.createTextNode(' · through '+new Date(grant.expires_at).toLocaleDateString()));
    links.append(p);

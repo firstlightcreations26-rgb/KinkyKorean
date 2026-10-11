@@ -51,26 +51,14 @@ input,select{width:100%;border:0;border-bottom:2px solid #c88ba3;background:tran
 <p class="script">Pick a page… or come a little deeper into my world. ♡</p>
 <div class="doodle">♡ ✎ 🔒 ♡</div>
 
-<div class="note" id="single">
-<span class="price">$8</span><h2 class="script">📖 Just One Page</h2>
-<p>One eligible locked diary entry. For when one title has you <em>way</em> too curious.</p>
-<p class="small">🖤 Unfiltered Exclusives stay inside Unfiltered Access.</p>
-<button onclick="pick('Single Entry — $8','single')">this one, KK →</button>
+<div class="note blacknote selected" id="membership">
+<span class="price">$8</span><h2 class="script">🔒 Full Diary Membership</h2>
+<p>One simple membership opens every locked diary story and all KK voice clips for 30 days.</p>
+<p class="small">No separate tiers. No single-page charge. One key opens it all.</p>
+<button onclick="pickMembership()">get full access →</button>
 </div>
+<p class="script" style="text-align:right">one key. every private page. 💋</p>
 
-<div class="note" id="daily">
-<span class="price">$28</span><h2 class="script">💗 Daily Access</h2>
-<p>Come inside the regular private diary and unlock the members-only pages included with Daily Access.</p>
-<button onclick="pick('Daily Access — $28','daily')">open the diary →</button>
-</div>
-
-<div class="note blacknote" id="unfiltered">
-<span class="price">$44</span><h2 class="script">🖤 Unfiltered</h2>
-<p>This is where I keep the pages I don't give everyone.</p>
-<p class="script">“My Craziest Moments…” 🔒 lives in here.</p>
-<p class="small">UNFILTERED EXCLUSIVE • not available as a $8 single entry</p>
-<button onclick="pick('Unfiltered Access — $44','unfiltered')">I want the unfiltered pages →</button>
-</div>
 <p class="script" style="text-align:right">careful what you unlock… 💋</p>
 </section>
 
@@ -83,19 +71,14 @@ input,select{width:100%;border:0;border-bottom:2px solid #c88ba3;background:tran
 </div>
 
 <div class="memo-note">
-<strong>💗 Please include a memo with every payment.</strong>
-<p class="small">Single Entry: <b>“Entry #___”</b><br>
-Daily Access: <b>“Daily Access”</b><br>
-Unfiltered Access: <b>“Unfiltered Access”</b></p>
+<strong>💗 Please include this memo with your payment.</strong>
+<p class="small"><b>“Full Diary Membership”</b></p>
 </div>
 
 <div class="formpaper">
 <form id="accessForm">
-<label>What are you unlocking?</label>
-<select id="plan" required><option value="">choose your secret…</option><option>Single Entry — $8</option><option>Daily Access — $28</option><option>Unfiltered Access — $44</option></select>
-
-<label>Which entry? <span class="small">(only if you're buying one page)</span></label>
-<input id="entry" placeholder="Entry # or diary title">
+<label>Your membership</label>
+<select id="plan" required><option>Full Diary Membership — $8</option></select>
 
 <label>What should I call you?</label>
 <input id="name" required placeholder="display name">
@@ -110,13 +93,13 @@ Unfiltered Access: <b>“Unfiltered Access”</b></p>
 <input id="paymentName" required placeholder="username / payment name">
 
 <label>How much did you send?</label>
-<input id="amount" required inputmode="decimal" placeholder="$8 / $28 / $44">
+<input id="amount" required inputmode="decimal" placeholder="$8" value="8" readonly>
 
 <label>What date did you send it?</label>
 <input id="paymentDate" type="date" required>
 
 <label>What memo did you put on the payment?</label>
-<input id="memo" required placeholder="ex: Daily Access">
+<input id="memo" required placeholder="Full Diary Membership" value="Full Diary Membership" readonly>
 <p class="small">This is required so I know exactly what your payment is for.</p>
 
 <div class="checkbox"><input id="confirm" type="checkbox" required><span>I confirm I'm 18+ and I've sent payment for the access I selected.</span></div>
@@ -138,57 +121,32 @@ Unfiltered Access: <b>“Unfiltered Access”</b></p>
 </main><nav style="max-width:1050px;margin:18px auto;display:flex;justify-content:space-between;font-family:'Bradley Hand','Segoe Print',cursive;font-size:20px"><a href="entry-001.html">← Flip Back</a><a href="entry.002.html">Turn Page →</a></nav></div>
 <script>
 const kkdb=supabase.createClient('https://zeeghkticnftmzslbzrc.supabase.co','sb_publishable_c1bDYHzjRzuVrW9DePRo2A_Tn4i5lOO');
-function pick(value,id,scroll=true){
-  const plan=document.getElementById('plan'), entry=document.getElementById('entry'), memo=document.getElementById('memo'), amount=document.getElementById('amount');
-  plan.value=value;
-  document.querySelectorAll('.note').forEach(x=>x.classList.remove('selected'));
-  document.getElementById(id).classList.add('selected');
-  if(value.startsWith('Single Entry')){
-    memo.placeholder='Entry #___';
-    if(entry.value) memo.value=entry.value;
-    amount.value='8';
-    entry.disabled=false;
-  }
-  if(value.startsWith('Daily Access')){
-    memo.value='Daily Access'; memo.placeholder='Daily Access'; amount.value='28'; entry.value=''; entry.disabled=true;
-  }
-  if(value.startsWith('Unfiltered Access')){
-    memo.value='Unfiltered Access'; memo.placeholder='Unfiltered Access'; amount.value='44'; entry.value=''; entry.disabled=true;
-  }
-  if(scroll) document.getElementById('request').scrollIntoView({behavior:'smooth'})
+function pickMembership(scroll=true){
+  document.getElementById('plan').value='Full Diary Membership — $8';
+  document.getElementById('memo').value='Full Diary Membership';
+  document.getElementById('amount').value='8';
+  document.getElementById('membership').classList.add('selected');
+  if(scroll) document.getElementById('request').scrollIntoView({behavior:'smooth'});
 }
-const q=new URLSearchParams(location.search);
-if(q.get('entry')) document.getElementById('entry').value='Entry #'+q.get('entry');
-if(q.get('plan')==='unfiltered') pick('Unfiltered Access — $44','unfiltered',false);
-if(q.get('plan')==='daily') pick('Daily Access — $28','daily',false);
-if(q.get('plan')==='single') pick('Single Entry — $8','single',false);
-document.getElementById('plan').addEventListener('change',function(){
-  if(this.value.startsWith('Single')) pick(this.value,'single',false);
-  if(this.value.startsWith('Daily')) pick(this.value,'daily',false);
-  if(this.value.startsWith('Unfiltered')) pick(this.value,'unfiltered',false);
-});
-document.getElementById('entry').addEventListener('input',function(){
-  if(document.getElementById('plan').value.startsWith('Single')) document.getElementById('memo').value=this.value;
-});
 document.getElementById('accessForm').addEventListener('submit',async function(e){
   e.preventDefault();
   const d={
-    plan:document.getElementById('plan').value,
-    entry:document.getElementById('entry').value,
+    plan:'Full Diary Membership — $8',
+    entry:'',
     name:document.getElementById('name').value,
     email:document.getElementById('email').value,
     method:document.getElementById('method').value,
     paymentName:document.getElementById('paymentName').value,
-    amount:document.getElementById('amount').value,
+    amount:'8',
     paymentDate:document.getElementById('paymentDate').value,
-    memo:document.getElementById('memo').value
+    memo:'Full Diary Membership'
   };
-  if(d.plan.startsWith('Single')&&/\b0*2\b/.test(d.entry.trim())){alert('Entry #002 is Unfiltered only. Choose Unfiltered Access for that page.');return;}
   const submitBtn=this.querySelector('button[type="submit"]');
   submitBtn.disabled=true; submitBtn.textContent='sealing your request… 💌';
-  const {error}=await kkdb.from('access_requests').insert({plan:d.plan,entry:d.entry||null,display_name:d.name,email:d.email,payment_method:d.method,payment_name:d.paymentName,amount:Number(d.amount),payment_date:d.paymentDate,memo:d.memo});
+  const {error}=await kkdb.from('access_requests').insert({plan:d.plan,entry:null,display_name:d.name,email:d.email,payment_method:d.method,payment_name:d.paymentName,amount:8,payment_date:d.paymentDate,memo:d.memo});
   if(error){submitBtn.disabled=false;submitBtn.textContent='seal my request 💌';alert('Your request didn’t save. Please try again, or email info@kinkykorean.blog for help.');return;}
   sessionStorage.setItem('kkAccessRequest',JSON.stringify(d));
-  location.href='access-received.html'
-})
+  location.href='access-received.html';
+});
+pickMembership(false);
 </script><footer><nav class="kk-footer-shortcuts" aria-label="Private messages and check-in"><a href="dear-kk.html">Dear KK</a><a href="check-in.html">KK Check-In</a></nav></footer></body></html>
