@@ -1,0 +1,16 @@
+.kk-newsletter{box-sizing:border-box;width:min(680px,calc(100% - 32px));margin:32px auto;padding:25px 24px;background:#150d13;border:1px solid #b95681;border-radius:8px;text-align:left;color:#ffe7f1;font:15px/1.5 Arial,sans-serif;letter-spacing:normal}
+.kk-newsletter h2{margin:0 0 8px;color:#f48fbb;font:400 clamp(27px,5vw,36px)/1.2 'Caveat',cursive}
+.kk-newsletter p{margin:0 0 18px;color:#e5c2d2;font:14px/1.6 Arial,sans-serif}
+.kk-newsletter .kk-email-row{display:flex;gap:10px;margin-top:7px}
+.kk-newsletter label{display:block;color:#ffe7f1;font:14px/1.5 Arial,sans-serif}
+.kk-newsletter input[type=email]{box-sizing:border-box;min-width:0;flex:1;width:100%;padding:12px;border:1px solid #b87593;border-radius:4px;background:#fff7fb;color:#26121c;font:16px/1.3 Arial,sans-serif}
+.kk-newsletter button{margin:0;padding:12px 19px;border:0;border-radius:4px;background:#cc347a;color:#fff;font:700 15px/1.3 Arial,sans-serif;cursor:pointer}
+.kk-newsletter button:disabled{opacity:.6;cursor:wait}
+.kk-newsletter .kk-email-consent{display:flex;align-items:flex-start;gap:9px;margin:16px 0}
+.kk-newsletter input[type=checkbox]{width:17px;height:17px;flex:0 0 auto;margin:3px 0 0;accent-color:#db448a}
+.kk-newsletter .kk-newsletter-note{font-size:12px;color:#d5a4bb;margin:0}
+.kk-newsletter a{color:#ffa4cc!important}
+.kk-newsletter .kk-email-status{margin:12px 0 0;min-height:22px;color:#ffe7f1}
+.kk-newsletter .kk-email-trap{position:absolute;left:-10000px;opacity:0;pointer-events:none}
+.kk-newsletter :focus-visible{outline:2px solid #ffb4d5;outline-offset:3px}
+@media(max-width:480px){.kk-newsletter{padding:21px 18px}.kk-newsletter .kk-email-row{flex-direction:column}.kk-newsletter button{min-height:44px}}

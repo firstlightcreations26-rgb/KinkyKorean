@@ -10,7 +10,7 @@
 <label for="entryBody">Full entry text</label><textarea id="entryBody" required maxlength="100000" placeholder="Write paragraphs with a blank line between them."></textarea>
 <label class="check"><input id="entryPublished" type="checkbox"> Publish now so approved readers can see it</label>
 <button type="submit">Save private entry</button><p id="entryStatus"></p></form></section>
-<h2>Current private entries</h2><div id="publishedList"></div>
+<section id="newsletterAdmin" class="card"><h2>Email signups</h2><p id="subscriberStatus">Sign in to view signups.</p><button id="refreshSubscribers" type="button">Refresh signups</button><button id="exportSubscribers" type="button" disabled>Download email list</button><div id="subscriberList"></div></section><h2>Current private entries</h2><div id="publishedList"></div>
 <div id="reply" class="card hidden"><h2>Access email to send</h2><p id="deliveryStatus" role="status">Sending the access email…</p><textarea id="replyText" readonly></textarea><button id="copyReply" type="button">Copy reply</button><a id="openMail" class="button" href="#">Open email app</a></div>
 </section></main><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script>
 const db=supabase.createClient('https://zeeghkticnftmzslbzrc.supabase.co','sb_publishable_c1bDYHzjRzuVrW9DePRo2A_Tn4i5lOO');
@@ -122,4 +122,4 @@ byId('entryForm').onsubmit=async e=>{
 byId('copyReply').onclick=async()=>{await navigator.clipboard.writeText(byId('replyText').value);byId('copyReply').textContent='Copied ✓'};
 byId('logout').onclick=async()=>{await db.auth.signOut();location.reload()};
 db.auth.onAuthStateChange(()=>setTimeout(start,0));start();
-</script><footer><nav class="kk-footer-shortcuts" aria-label="Private messages and check-in"><a href="dear-kk.html">Dear KK</a><a href="check-in.html">KK Check-In</a></nav></footer></body></html>
+</script><footer><nav class="kk-footer-shortcuts" aria-label="Private messages and check-in"><a href="dear-kk.html">Dear KK</a><a href="check-in.html">KK Check-In</a></nav></footer><script defer src="newsletter-admin.js?v=20261012"></script></body></html>
