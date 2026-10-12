@@ -29,7 +29,7 @@ a{color:#a62f64}
 <div id="accessLinks"></div>
 <button id="logout" type="button">Lock My Diary</button>
 </div>
-<p class="small">Access only works for approved, unexpired memberships. Need help? <a href="mailto:info@kinkykorean.blog">info@kinkykorean.blog</a></p>
+<p class="small">Membership lasts 30 days and requires manual renewal. No automatic charges. <a href="access.html">Renew your membership →</a><br>Access only works for approved, unexpired memberships. Need help? <a href="mailto:info@kinkykorean.blog">info@kinkykorean.blog</a></p>
 </main>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
@@ -62,7 +62,7 @@ async function checkAccess(){
    p.append(a,document.createTextNode(' · through '+new Date(grant.expires_at).toLocaleDateString()));
    links.append(p);
  }
- if(hasVoice){const p=document.createElement('p'),a=document.createElement('a');a.href='voice.html';a.textContent='Open the private KK voice library →';p.append(a);links.append(p);}
+ if(hasVoice){const p=document.createElement('p'),a=document.createElement('a');a.href='voice.html';a.textContent='Open WAD — Whispers After Dark →';p.append(a);links.append(p);}
 }
 form.addEventListener('submit',async e=>{
  e.preventDefault();statusEl.textContent='Sending your private link…';
