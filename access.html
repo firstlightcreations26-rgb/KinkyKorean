@@ -53,8 +53,8 @@ input,select{width:100%;border:0;border-bottom:2px solid #c88ba3;background:tran
 
 <div class="note blacknote selected" id="membership">
 <span class="price">$8</span><h2 class="script">🔒 Full Diary Membership</h2>
-<p>One simple membership opens every locked diary story for 30 days. Add my full voice library for $10 more.</p>
-<p class="small">No confusing tiers. Choose the diary alone for $8, or add every voice clip for $18 total.</p>
+<p>Membership lasts <strong>30 days from approval</strong> and expires unless you renew. Add the WAD voice library for $10 more for the same 30-day period.</p>
+<p class="small">Diary: $8 per 30 days. Diary + WAD: $18 per 30 days. <strong>No automatic charges.</strong> To renew, send a new payment and submit this form using your existing member email.</p>
 <button onclick="pickMembership()">choose your membership →</button>
 </div>
 <p class="script" style="text-align:right">every private page. voice is optional. 💋</p>
@@ -79,7 +79,7 @@ input,select{width:100%;border:0;border-bottom:2px solid #c88ba3;background:tran
 <form id="accessForm">
 <label>Your membership</label>
 <select id="plan" required disabled><option>Full Diary Membership — $8</option></select>
-<div class="checkbox"><input id="voiceAddon" type="checkbox"><span><strong>Add the complete KK voice library for $10.</strong><br>Diary + voice total: $18 for 30 days.</span></div>
+<div class="checkbox"><input id="voiceAddon" type="checkbox"><span><strong>Add the complete WAD voice library for $10.</strong><br>Diary + voice total: $18 for 30 days.</span></div>
 
 <label>What should I call you?</label>
 <input id="name" required placeholder="display name">
@@ -101,9 +101,9 @@ input,select{width:100%;border:0;border-bottom:2px solid #c88ba3;background:tran
 
 <label>What memo did you put on the payment?</label>
 <input id="memo" required placeholder="Full Diary Membership" value="Full Diary Membership" readonly>
-<p class="small">This is required so I know exactly what your payment is for.</p>
+<p class="small">This is required so I know exactly what your payment is for.</p><p class="small"><strong>Renewing?</strong> Use the same email as your current membership. Early renewals add 30 days to your existing expiry date; expired memberships restart when approved. WAD access also needs renewal with the $18 option.</p>
 
-<div class="checkbox"><input id="confirm" type="checkbox" required><span>I confirm I'm 18+ and I've sent payment for the access I selected.</span></div>
+<div class="checkbox"><input id="confirm" type="checkbox" required><span>I confirm I'm 18+ and I've sent payment for the access I selected. I understand access expires after 30 days and renewal requires another payment.</span></div>
 <p class="small">💗 Every new reader is personally verified. Please allow up to <strong>24 hours</strong> for your private access email.</p>
 <button type="submit">seal my request 💌</button>
 </form>
