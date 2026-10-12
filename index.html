@@ -23,6 +23,17 @@
 /* Approved title direction: soft handwritten lettering, pink with white outline. */
 .landing-title{font-family:'Kaushan Script','Caveat',cursive;font-weight:400;text-transform:none;font-size:clamp(26px,5.4vw,83px);letter-spacing:-.025em;color:#f33b9b;-webkit-text-stroke:1.2px #fff;paint-order:stroke fill;text-shadow:0 2px 3px #000}
 @media(max-width:650px){.mobile-landing-header h1{font-family:'Kaushan Script','Caveat',cursive;font-weight:400;text-transform:none;font-size:clamp(44px,12vw,70px);line-height:1.2;letter-spacing:-.025em;color:#f33b9b;-webkit-text-stroke:1px #fff;paint-order:stroke fill;text-shadow:0 2px 3px #000;margin-bottom:14px}}
+</style><style>
+/* Leave room above the images for the category labels and show a taller crop. */
+@media(max-width:650px){
+.mobile-category .mobile-photo{margin-top:54px;aspect-ratio:2/1}
+.mobile-diary .mobile-photo{background-position:var(--atlas-x) calc(var(--atlas-y) + 8cqw)}
+.mobile-voice .mobile-photo{background-position:var(--atlas-x) calc(var(--atlas-y) + 8cqw)}
+.mobile-extras .virtual-gf-photo{aspect-ratio:2/1;background-size:cover;background-position:center}
+.mobile-category .mobile-photo:after{background:linear-gradient(transparent 75%,#000)}
+.mobile-category .mobile-category-copy{padding-top:18px}
+}
+@media(min-width:651px){.landing .link.extras{background-position:center calc(50% + 18px)}}
 </style></head><body><main class="landing" aria-label="The Kinky Korean">
 <h1 class="landing-title">The Kinky Korean</h1>
 <img src="kk-landing.jpg" width="1536" height="768" alt="The Kinky Korean. Things I made when keeping a diary apparently wasn’t enough. Pink handwriting, lips and photographs on a black background. Behind the Pages: personal diary blog of experiences and events from my life. Whispers After Dark: audio entries. Looking for a virtual GF experience? Private virtual time with KK.">
