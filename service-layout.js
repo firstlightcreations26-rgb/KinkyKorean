@@ -6,7 +6,7 @@
   const card=document.createElement('div');card.className='quick-categories-card';
   const heading=document.createElement('div');heading.className='quick-categories-kicker';heading.textContent='Jump to a page';
   const links=document.createElement('div');links.className='quick-category-links';
-  for(const [href,text] of [['entry-001.html','Diary Pages'],['voice.html','KK Voice'],['wishlist.html','Payment Info'],['virtual-kk.html','Virtual GF'],['dear-kk.html','Dear KK'],['check-in.html','KK Check-In']]){const a=document.createElement('a');a.href=href;const span=document.createElement('span');span.textContent=text;a.append(span);links.append(a)}
+  for(const [href,text] of [['entry-001.html','Diary Pages'],['voice.html','WAD'],['wishlist.html','Payment Info'],['virtual-kk.html','Virtual GF'],['dear-kk.html','Dear KK'],['check-in.html','KK Check-In']]){const a=document.createElement('a');a.href=href;const span=document.createElement('span');span.textContent=text;a.append(span);links.append(a)}
   card.append(heading,links);section.append(card);old.replaceWith(section);
  }
  const footer=document.querySelector('footer');
