@@ -59,6 +59,8 @@ function makeRequest(r){
  card.append(button,result);
  button.onclick=async()=>{
   if(!checked.checked){result.textContent='Check the payment first.';return}
+  const yearly=r.plan==='Yearly Diary Membership — $88';
+  if(yearly&&Number(r.amount)!==88){result.textContent='Yearly diary payment must be $88.';return}
   const level=r.plan==='Full Diary + Voice — $18'?'full_diary_voice':'full_diary';
   const entry=null;
   const available=entries.some(p=>p.published);
@@ -71,7 +73,7 @@ function makeRequest(r){
     .gt('expires_at',now.toISOString()).order('expires_at',{ascending:false}).limit(1);
   if(renewalError){result.textContent='Could not check the existing expiry date. No access was created. '+renewalError.message;button.disabled=false;return}
   const renewalBase=currentGrants?.length?new Date(currentGrants[0].expires_at):now;
-  const expiry=new Date(renewalBase.getTime()+30*24*60*60*1000);
+  const expiry=new Date(renewalBase.getTime()+(yearly?365:30)*24*60*60*1000);
   const grant={request_id:r.id,user_id:null,email:r.email.trim().toLowerCase(),access_level:level,entry_slug:entry?String(entry).padStart(3,'0'):null,starts_at:now.toISOString(),expires_at:expiry.toISOString(),active:true};
   const {error}=await db.from('member_access').insert(grant);
   if(error){result.textContent='Could not approve: '+error.message;button.disabled=false;return}
@@ -90,10 +92,11 @@ function makeRequest(r){
  return card;
 }
 function showReply(r,grant,expiry){
- const tier=grant.access_level==='full_diary_voice'?'Full Diary + Voice':'Full Diary Membership';
+ const yearly=r.plan==='Yearly Diary Membership — $88';
+ const tier=yearly?'Yearly Diary Membership':grant.access_level==='full_diary_voice'?'Full Diary + Voice':'Full Diary Membership';
  const subject='Your Kinky Korean '+tier+' is ready 💌';
  const voiceLine=grant.access_level==='full_diary_voice'?'\nYour voice clips: https://kinkykorean.blog/voice.html\n':'';
- const body='Hey '+r.display_name+',\n\nI matched your payment. Your '+tier+' is ready.\n\nSign in here: https://kinkykorean.blog/member-login.html\nUse this email: '+grant.email+'\nYour access runs through: '+expiry.toLocaleDateString()+'\n'+voiceLine+'\nTap “Send My Private Link” on that page, then check your email for your one-time sign-in link. Access expires on the date above. There are no automatic charges. Renew here using the same member email: https://kinkykorean.blog/access.html . Diary renewal is $8; Diary + WAD is $18 for another 30 days. If something stays locked, reply and tell me which page you tried.\n\n— KK 💋';
+ const body='Hey '+r.display_name+',\n\nThank you for wanting to be a part of my kinky life. I matched your payment. Your '+tier+' is ready.\n\nSign in here: https://kinkykorean.blog/member-login.html\nUse this email: '+grant.email+'\nYour access runs through: '+expiry.toLocaleDateString()+'\n'+voiceLine+'\nTap “Send My Private Link” on that page, then check your email for your one-time sign-in link. Access expires on the date above. There are no automatic charges. Renew here using the same member email: https://kinkykorean.blog/access.html . Diary renewal is $8 or Diary + WAD is $18 for 30 days. Yearly diary access is $88 for 365 days; WAD and personal services are separate. If something stays locked, reply and tell me which page you tried.\n\n— KK 💋';
  byId('replyText').value='Subject: '+subject+'\nTo: '+grant.email+'\n\n'+body;
  byId('openMail').href='mailto:'+encodeURIComponent(grant.email)+'?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);
  byId('reply').classList.remove('hidden');byId('reply').scrollIntoView({behavior:'smooth'});
